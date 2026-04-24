@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joshi's Printers | Premium Printing & Packaging Bhopal</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-pure: #050505;
+            --bg-section: #0f0f0f;
+            --gold: #D4AF37;
+            --text-main: #ffffff;
+            --text-dim: #b0b0b0;
+            --whatsapp: #25D366;
+            --insta: #E4405F;
+            --nav-height: 85px; 
+            --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { background-color: var(--bg-pure); color: var(--text-main); font-family: 'Inter', sans-serif; line-height: 1.7; overflow-x: hidden; }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* TOP BAR */
+        .top-bar { background: var(--gold); color: #000; text-align: center; padding: 10px 0; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; z-index: 1002; }
+
+        /* NAV */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 0 8%; height: var(--nav-height); background: rgba(5,5,5,0.9); backdrop-filter: blur(15px); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.1); transition: var(--transition-smooth); }
+        nav.scrolled { height: 70px; background: #000; border-bottom: 1px solid var(--gold); }
+        .nav-logo img { height: 55px; width: auto; transition: var(--transition-smooth); }
+        nav.scrolled .nav-logo img { height: 45px; }
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { color: var(--text-main); text-decoration: none; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; transition: var(--transition-smooth); position: relative; }
+        .nav-links a:hover { color: var(--gold); }
+        .nav-links a::after { content: ''; position: absolute; width: 0; height: 1px; bottom: -5px; left: 0; background: var(--gold); transition: var(--transition-smooth); }
+        .nav-links a:hover::after { width: 100%; }
+        .quote-btn { border: 1px solid var(--gold); padding: 12px 25px; color: var(--gold) !important; border-radius: 4px; font-size: 0.75rem !important; margin-left: 10px; }
+        .quote-btn:hover { background: var(--gold); color: #000 !important; }
+        .insta-nav svg { width: 20px; height: 20px; fill: #fff; transition: var(--transition-smooth); display: block; }
+        .insta-nav:hover svg { fill: var(--insta); transform: translateY(-2px); }
+        .menu-toggle { display: none; cursor: pointer; flex-direction: column; gap: 6px; }
+        .menu-toggle span { width: 30px; height: 2px; background: var(--gold); transition: 0.3s; }
+
+        /* HERO */
+        .hero { min-height: 80vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 100px 10%; background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), radial-gradient(circle at center, #1a1a1a 0%, #050505 100%); }
+        .hero-content { max-width: 1000px; width: 100%; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 8vw, 5.8rem); color: var(--gold); line-height: 1.1; margin-bottom: 30px; font-weight: 900; }
+        .hero p { color: var(--text-dim); margin-bottom: 45px; letter-spacing: 5px; text-transform: uppercase; font-weight: 500; font-size: 1rem; }
+        .btn-container { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+        .btn { padding: 22px 45px; text-decoration: none; font-weight: 700; border-radius: 4px; transition: var(--transition-smooth); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 2px; }
+        .btn-gold { background: var(--gold); color: #000; }
+        .btn-outline { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.2); }
+        .btn:hover { transform: translateY(-8px); background: #fff; color: #000; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+
+        /* STATS BAR */
+        .values-bar { background: #0a0a0a; padding: 80px 10%; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; border-top: 1px solid #1a1a1a; border-bottom: 1px solid #1a1a1a; }
+        .value-item { text-align: center; }
+        .value-item .val-num { color: var(--gold); font-size: 2.5rem; font-weight: 800; display: block; margin-bottom: 5px; }
+        .value-item .val-text { color: var(--text-dim); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; }
+
+        /* ABOUT */
+        .section-about { padding: 140px 10%; }
+        .about-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 80px; align-items: center; max-width: 1200px; margin: 0 auto; }
+        .about-img img { width: 100%; border: 1px solid #222; padding: 12px; background: #0a0a0a; border-radius: 12px; }
+        .about-text h2 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 3.5rem); margin-bottom: 30px; color: var(--gold); }
+        .about-text p { color: var(--text-dim); font-size: 1.1rem; margin-bottom: 25px; }
+
+        /* WHY CHOOSE US */
+        .section-why { padding: 140px 10%; background: var(--bg-section); position: relative; overflow: hidden; }
+        .section-why::before { content: 'WHY US'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: 'Playfair Display', serif; font-size: clamp(6rem, 18vw, 15rem); font-weight: 900; color: rgba(212,175,55,0.03); white-space: nowrap; pointer-events: none; letter-spacing: 10px; z-index: 0; }
+        .section-header { text-align: center; margin-bottom: 80px; position: relative; z-index: 1; }
+        .section-header .eyebrow { color: var(--gold); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 5px; font-weight: 700; display: block; margin-bottom: 18px; }
+        .section-header h2 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5vw, 3.8rem); color: var(--text-main); line-height: 1.15; }
+        .section-header h2 span { color: var(--gold); }
+        .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); max-width: 1200px; margin: 0 auto; border: 1px solid #1a1a1a; border-radius: 20px; overflow: hidden; position: relative; z-index: 1; }
+        .why-card { background: #0a0a0a; padding: 50px 40px; position: relative; transition: var(--transition-smooth); border-right: 1px solid #1a1a1a; border-bottom: 1px solid #1a1a1a; overflow: hidden; }
+        .why-card:nth-child(3n) { border-right: none; }
+        .why-card:nth-child(n+4) { border-bottom: none; }
+        .why-card::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--gold); transition: var(--transition-smooth); }
+        .why-card:hover { background: #111; }
+        .why-card:hover::after { width: 100%; }
+        .why-card:hover .why-icon-wrap { background: var(--gold); border-color: var(--gold); }
+        .why-card:hover .why-icon-wrap svg { stroke: #000; }
+        .why-num { position: absolute; top: 18px; right: 25px; font-family: 'Playfair Display', serif; font-size: 5rem; font-weight: 900; color: rgba(212,175,55,0.05); line-height: 1; transition: var(--transition-smooth); user-select: none; }
+        .why-card:hover .why-num { color: rgba(212,175,55,0.12); }
+        .why-icon-wrap { width: 54px; height: 54px; border: 1px solid rgba(212,175,55,0.35); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 26px; transition: var(--transition-smooth); }
+        .why-icon-wrap svg { width: 24px; height: 24px; stroke: var(--gold); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; transition: var(--transition-smooth); }
+        .why-card h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--text-main); margin-bottom: 14px; line-height: 1.3; }
+        .why-card p { color: var(--text-dim); font-size: 0.9rem; line-height: 1.85; }
+        .why-tag { display: inline-block; margin-top: 22px; padding: 5px 14px; border: 1px solid #252525; border-radius: 20px; font-size: 0.62rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); font-weight: 700; }
+
+        /* CAPABILITIES */
+        .section-work { padding: 140px 10%; background: var(--bg-pure); }
+        .work-section-header { text-align: center; margin-bottom: 80px; }
+        .work-section-header .eyebrow { color: var(--gold); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 5px; font-weight: 700; display: block; margin-bottom: 18px; }
+        .work-section-header h2 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5vw, 3.8rem); color: var(--text-main); line-height: 1.15; }
+        .work-section-header h2 span { color: var(--gold); }
+        .work-section-header p { color: var(--text-dim); margin-top: 18px; font-size: 1rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+
+        /* FILTER TABS */
+        .filter-tabs { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 60px; }
+        .filter-btn { padding: 10px 24px; border: 1px solid #2a2a2a; background: transparent; color: var(--text-dim); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; border-radius: 30px; cursor: pointer; transition: var(--transition-smooth); font-family: 'Inter', sans-serif; }
+        .filter-btn:hover, .filter-btn.active { background: var(--gold); color: #000; border-color: var(--gold); }
+
+        /* PRODUCT GRID */
+        .work-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; max-width: 1300px; margin: 0 auto; }
+
+        .work-card { background: #0d0d0d; border: 1px solid #1a1a1a; border-radius: 16px; overflow: hidden; transition: var(--transition-smooth); position: relative; }
+        .work-card:hover { transform: translateY(-10px); border-color: var(--gold); box-shadow: 0 25px 50px rgba(0,0,0,0.6); }
+
+        .work-img { height: 240px; background: #fff; display: flex; align-items: center; justify-content: center; padding: 30px; overflow: hidden; position: relative; }
+        .work-img img { max-width: 100%; max-height: 100%; object-fit: contain; transition: var(--transition-smooth); }
+        .work-card:hover .work-img img { transform: scale(1.06); }
+
+        .work-badge { position: absolute; top: 14px; left: 14px; background: var(--gold); color: #000; font-size: 0.6rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; padding: 5px 12px; border-radius: 20px; }
+
+        .work-info { padding: 28px 30px 30px; }
+        .work-info h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--text-main); margin-bottom: 10px; }
+        .work-info p { color: var(--text-dim); font-size: 0.88rem; line-height: 1.7; margin-bottom: 18px; }
+
+        .work-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
+        .work-tag { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--gold); border: 1px solid #2a2a2a; padding: 4px 10px; border-radius: 20px; }
+
+        .shop-btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; background: transparent; color: var(--gold); text-decoration: none; padding: 14px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; border-radius: 8px; letter-spacing: 2px; transition: 0.3s; border: 1px solid var(--gold); }
+        .shop-btn:hover { background: var(--gold); color: #000; }
+        .shop-btn svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+        /* CONTACT */
+        .section-contact { padding: 140px 10%; }
+        .contact-box { background: #0d0d0d; border: 1px solid #1a1a1a; display: grid; grid-template-columns: 1.3fr 0.7fr; max-width: 1100px; margin: 0 auto; border-radius: 20px; overflow: hidden; }
+        .contact-details { padding: 60px; }
+        .detail-item label { color: var(--gold); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 3px; display: block; margin-bottom: 10px; font-weight: 700; }
+        .detail-item p { margin-bottom: 35px; font-size: 1.1rem; color: var(--text-main); }
+        .qr-side { background: #080808; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px; border-left: 1px solid #1a1a1a; }
+        .qr-side img { width: 200px; border: 10px solid #fff; margin-bottom: 20px; border-radius: 8px; }
+
+        /* FLOATING WHATSAPP */
+        .float-ws { position: fixed; bottom: 30px; right: 30px; background: var(--whatsapp); color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-size: 0.8rem; font-weight: 800; box-shadow: 0 15px 30px rgba(0,0,0,0.4); z-index: 2000; display: flex; align-items: center; gap: 10px; transition: var(--transition-smooth); }
+        .float-ws:hover { transform: scale(1.05); background: #1eb956; }
+
+        footer { text-align: center; padding: 80px 10%; color: #444; border-top: 1px solid #111; font-size: 0.7rem; letter-spacing: 3px; }
+
+        /* RESPONSIVE */
+        @media (max-width: 968px) {
+            .nav-links { position: fixed; top: var(--nav-height); left: -100%; flex-direction: column; background: #000; width: 100%; padding: 50px 0; transition: 0.5s; border-bottom: 1px solid var(--gold); }
+            .nav-links.active { left: 0; }
+            .menu-toggle { display: flex; }
+            .about-grid, .contact-box { grid-template-columns: 1fr; }
+            .why-grid { grid-template-columns: 1fr; }
+            .why-card { border-right: none !important; }
+            .why-card:last-child { border-bottom: none; }
+            .hero h1 { font-size: 3.2rem; }
+            .contact-details { padding: 40px; }
+            .qr-side { border-left: none; border-top: 1px solid #1a1a1a; }
+            .work-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">🚀 Fast PAN-India Shipping | Trusted Since 1996</div>
+
+    <a href="https://wa.me/919826060413?text=Namaste!%20I'm%20interested%20in%20your%20printing%20services." class="float-ws" target="_blank">
+        <span style="font-size: 1.5rem;">💬</span> QUICK WHATSAPP QUOTE
+    </a>
+
+    <nav id="mainNav">
+        <div class="nav-logo">
+            <img src="001.png" alt="Joshi's Printers Logo">
+        </div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span><span></span><span></span>
+        </div>
+        <div class="nav-links" id="nav-menu">
+            <a href="#about">Our Story</a>
+            <a href="#why">Why Us</a>
+            <a href="#work">Capabilities</a>
+            <a href="#contact">Location</a>
+            <a href="https://www.instagram.com/joshisprintersbpl" target="_blank" class="insta-nav">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.332 3.608 1.308.975.975 1.245 2.242 1.308 3.607.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.332 2.633-1.308 3.608-.975.975-2.242 1.245-3.607 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.332-3.608-1.308-.975-.975-1.245-2.242-1.308-3.607-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.062-1.366.332-2.633 1.308-3.608.975-.975 2.242-1.245 3.607-1.308 1.266-.058 1.646-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.058-1.281.072-1.689.072-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.281-.058-1.689-.072-4.948-.072zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="#contact" class="quote-btn">REQUEST A QUOTE</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero">
+        <div class="hero-content reveal">
+            <p>High-End Offset & Industrial Packaging</p>
+            <h1>Legacy in every leaf.<br>Quality in every color.</h1>
+            <div class="btn-container">
+                <a href="#work" class="btn btn-gold">Explore Products</a>
+                <a href="https://wa.me/919826060413" class="btn btn-outline">Consultation</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- STATS -->
+    <div class="values-bar reveal">
+        <div class="value-item"><span class="val-num">30+</span><span class="val-text">Years of Trust</span></div>
+        <div class="value-item"><span class="val-num">PAN</span><span class="val-text">India Delivery</span></div>
+        <div class="value-item"><span class="val-num">10k+</span><span class="val-text">Projects Done</span></div>
+        <div class="value-item"><span class="val-num">100%</span><span class="val-text">Precision Focused</span></div>
+    </div>
+
+    <!-- ABOUT -->
+    <section class="section-about" id="about">
+        <div class="about-grid">
+            <div class="about-img reveal">
+                <img src="003.png" alt="Joshi's Printers Offset Facility">
+            </div>
+            <div class="about-text reveal">
+                <h2>Three Decades of Precision.</h2>
+                <p>Established in 1996 in the heart of Bhopal, Joshi’s Printers began with a simple mission: to provide the local community with uncompromising print quality. Today, 30 years later, that mission has expanded across the borders of Madhya Pradesh to every corner of India.</p>
+                <p>Under the leadership of Nitin Joshi, we have evolved from a traditional press into a high-tech printing powerhouse. Whether it is a single pack of premium business cards or a massive export order of custom packaging boxes, we treat every print with the same mathematical precision. We don’t just put ink on paper; we bring your brand’s vision to life.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE US -->
+    <section class="section-why" id="why">
+        <div class="section-header reveal">
+            <span class="eyebrow">The Joshi's Difference</span>
+            <h2>Why Businesses Choose <span>Us</span></h2>
+        </div>
+        <div class="why-grid">
+            <div class="why-card reveal">
+                <span class="why-num">01</span>
+                <div class="why-icon-wrap"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+                <h3>30+ Years of Legacy</h3>
+                <p>Since 1996, we have delivered print excellence to thousands of clients. Our experience means fewer errors, faster delivery, and results you can trust every single time.</p>
+                <span class="why-tag">Est. 1996</span>
+            </div>
+            <div class="why-card reveal">
+                <span class="why-num">02</span>
+                <div class="why-icon-wrap"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+                <h3>State-of-the-Art Offset</h3>
+                <p>We operate industry-leading offset machines that produce razor-sharp detail, vibrant CMYK colour accuracy, and flawless finish on every sheet.</p>
+                <span class="why-tag">High-Tech</span>
+            </div>
+            <div class="why-card reveal">
+                <span class="why-num">03</span>
+                <div class="why-icon-wrap"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+                <h3>PAN India Delivery</h3>
+                <p>Wherever your business is located, your prints reach you. We ship across every state with reliable logistics and careful packaging to prevent damage.</p>
+                <span class="why-tag">Nationwide</span>
+            </div>
+            <div class="why-card reveal">
+                <span class="why-num">04</span>
+                <div class="why-icon-wrap"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
+                <h3>Fully Custom Solutions</h3>
+                <p>No templates. No compromises. From box dimensions to die-cut labels to bespoke finishes — every order is tailored precisely to your brand.</p>
+                <span class="why-tag">Bespoke</span>
+            </div>
+            <div class="why-card reveal">
+                <span class="why-num">05</span>
+                <div class="why-icon-wrap"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+                <h3>Fast Turnaround Times</h3>
+                <p>We understand that deadlines matter. Our efficient production pipeline means your order moves from plate to dispatch without delay.</p>
+                <span class="why-tag">On-Time</span>
+            </div>
+            <div class="why-card reveal">
+                <span class="why-num">06</span>
+                <div class="why-icon-wrap"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+                <h3>Quality You Can Feel</h3>
+                <p>From 350 GSM card stock to UV spot coating and soft-touch lamination — we obsess over materials so your prints make a lasting impression.</p>
+                <span class="why-tag">Premium</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CAPABILITIES -->
+    <section class="section-work" id="work">
+        <div class="work-section-header reveal">
+            <span class="eyebrow">What We Print</span>
+            <h2>Our <span>Capabilities</span></h2>
+            <p>From luxury packaging to large-format displays — we bring every print vision to life with precision and passion.</p>
+        </div>
+
+        <div class="filter-tabs reveal">
+            <button class="filter-btn active" onclick="filterCards('all', this)">All Products</button>
+            <button class="filter-btn" onclick="filterCards('packaging', this)">Packaging</button>
+            <button class="filter-btn" onclick="filterCards('branding', this)">Branding</button>
+            <button class="filter-btn" onclick="filterCards('marketing', this)">Marketing</button>
+            <button class="filter-btn" onclick="filterCards('display', this)">Display</button>
+        </div>
+
+        <div class="work-grid">
+
+            <div class="work-card reveal" data-category="packaging">
+                <div class="work-img">
+                    <span class="work-badge">Best Seller</span>
+                    <img src="007.png" alt="Custom Packaging">
+                </div>
+                <div class="work-info">
+                    <h3>Custom Packaging</h3>
+                    <p>Luxury mono-cartons, sweet boxes, and industrial-grade packaging built to protect and impress.</p>
+                    <div class="work-tags">
+                        <span class="work-tag">Mono-Cartons</span>
+                        <span class="work-tag">Sweet Boxes</span>
+                        <span class="work-tag">Custom Size</span>
+                    </div>
+                    <a href="https://wa.me/919826060413?text=Hi!%20I'm%20interested%20in%20Custom%20Packaging." class="shop-btn">
+                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                        Inquire on WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="work-card reveal" data-category="packaging">
+                <div class="work-img">
+                    <img src="008.png" alt="Paper Bags">
+                </div>
+                <div class="work-info">
+                    <h3>Paper Bags</h3>
+                    <p>Premium branded carry bags for retail, gifting, and events — fully customised with your logo and design.</p>
+                    <div class="work-tags">
+                        <span class="work-tag">Retail</span>
+                        <span class="work-tag">Gifting</span>
+                        <span class="work-tag">Rope Handle</span>
+                    </div>
+                    <a href="https://wa.me/919826060413?text=Hi!%20I'm%20interested%20in%20Paper%20Bags." class="shop-btn">
+                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                        Inquire on WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="work-card reveal" data-category="branding">
+                <div class="work-img">
+                    <img src="004.png" alt="Calendars">
+                </div>
+                <div class="work-info">
+                    <h3>Corporate Calendars</h3>
+                    <p>High-vibrancy wall and desk calendars that keep your brand in front of clients 365 days a year.</p>
+                    <div class="work-tags">
+                        <span class="work-tag">Wall Calendar</span>
+                        <span class="work-tag">Desk Calendar</span>
+                        <span class="work-tag">Spiral Bound</span>
+                    </div>
+                    <a href="https://wa.me/919826060413?text=Hi!%20I'm%20interested%20in%20Calendars." class="shop-btn">
+                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                        Inquire on WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="work-card reveal" data-category="branding">
+                <div class="work-img">
+                    <img src="005.png" alt="Magazines & Booklets">
+                </div>
+                <div class="work-info">
+                    <h3>Magazines & Booklets</h3>
+                    <p>Saddle-stitched and perfect-bound booklets, catalogues, and magazines with premium finish.</p>
+                    <div class="work-tags">
+                        <span class="work-tag">Catalogues</span>
+                        <span class="work-tag">Magazines</span>
+                        <span class="work-tag">Perfect Bound</span>
+                    </div>
+                    <a href="https://wa.me/919826060413?text=Hi!%20I'm%20interested%20in%20Magazines%20and%20Booklets." class="shop-btn">
+                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                        Inquire on WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="work-card reveal" data-category="marketing">
+                <div class="work-img">
+                    <img src="009.png" alt="Stickers & Labels">
+                </div>
+                <div class="work-info">
+                    <h3>Stickers & Labels</h3>
+                    <p>Die-cut stickers, product labels, and barcode labels in any shape or size to make your brand pop.</p>
+                    <div class="work-tags">
+                        <span class="work-tag">Die-Cut</span>
+                        <span class="work-tag">Waterproof</span>
+                        <span class="work-tag">Product Labels</span>
+                    </div>
+                    <a href="https://wa.me/919826060413?text=Hi!%20I'm%20interested%20in%20Stickers%20and%20Labels." class="shop-btn">
+                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                        Inquire on WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="work-card reveal" data-category="marketing">
+                <div class="work-img">
+                    <img src="010.png" alt="Pamphlets & Flyers">
+                </div>
+                <div class="work-info">
+                    <h3>Pamphlets & Flyers</h3>
+                    <p>Eye-catching flyers, leaflets, and pamphlets for events, promotions, and product launches.</p>
+                    <div class="work-tags">
+                        <span class="work-tag">A4 / A5</span>
+                        <span class="work-tag">Tri-Fold</span>
+                        <span class="work-tag">Bulk Orders</span>
+                    </div>
+                    <a href="https://wa.me/919826060413?text=Hi!%20I'm%20interested%20in%20Pamphlets%20and%20Flyers." class="shop-btn">
+                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                        Inquire on WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="work-card reveal" data-category="marketing">
+                <div class="work-img">
+                    <img src="011.png" alt="Tags & Swing Tags">
+                </div>
+                <div class="work-info">
+                    <h3>Tags & Swing Tags</h3>
+                    <p>Custom hang tags, price tags, and swing tags for retail garments, gifts, and products.</p>
+                    <div class="work-tags">
+                        <span class="work-tag">Hang Tags</span>
+                        <span class="work-tag">Price Tags</span>
+                        <span class="work-tag">Die-Cut Shape</span>
+                    </div>
+                    <a href="https://wa.me/919826060413?text=Hi!%20I'm%20interested%20in%20Tags." class="shop-btn">
+                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                        Inquire on WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="work-card reveal" data-category="branding">
+                <div class="work-img">
+                    <img src="012.png" alt="Folders & Brochures">
+                </div>
+                <div class="work-info">
+                    <h3>Folders & Brochures</h3>
+                    <p>Professional presentation folders and multi-page brochures for corporate meetings and client pitches.</p>
+                    <div class="work-tags">
+                        <span class="work-tag">A4 Folders</span>
+                        <span class="work-tag">Bi-Fold</span>
+                        <span class="work-tag">UV Coated</span>
+                    </div>
+                    <a href="https://wa.me/919826060413?text=Hi!%20I'm%20interested%20in%20Folders%20and%20Brochures." class="shop-btn">
+                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                        Inquire on WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="work-card reveal" data-category="display">
+                <div class="work-img">
+                    <img src="006.png" alt="Tent Cards">
+                </div>
+                <div class="work-info">
+                    <h3>Tent Cards & Standees</h3>
+                    <p>Table tent cards and A-frame standees for restaurants, hotels, events, and retail counters.</p>
+                    <div class="work-tags">
+                        <span class="work-tag">Table Tent</span>
+                        <span class="work-tag">A-Frame</span>
+                        <span class="work-tag">Events</span>
+                    </div>
+                    <a href="https://wa.me/919826060413?text=Hi!%20I'm%20interested%20in%20Tent%20Cards." class="shop-btn">
+                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                        Inquire on WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="work-card reveal" data-category="display">
+                <div class="work-img">
+                    <img src="013.png" alt="Promotional Canopy">
+                </div>
+                <div class="work-info">
+                    <h3>Promotional Canopies</h3>
+                    <p>Full-colour branded canopies and kiosks for outdoor events, exhibitions, and brand activations.</p>
+                    <div class="work-tags">
+                        <span class="work-tag">Outdoor</span>
+                        <span class="work-tag">Exhibitions</span>
+                        <span class="work-tag">Full Print</span>
+                    </div>
+                    <a href="https://wa.me/919826060413?text=Hi!%20I'm%20interested%20in%20Promotional%20Canopies." class="shop-btn">
+                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                        Inquire on WhatsApp
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section-contact" id="contact">
+        <div class="contact-box reveal">
+            <div class="contact-details">
+                <h2 style="font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 40px; color: var(--gold);">Get In Touch</h2>
+                <div class="detail-item">
+                    <label>Press Office</label>
+                    <p>Plot No. 23-24, Press Complex, Zone-I, <br> M.P. Nagar, Bhopal</p>
+                </div>
+                <div class="detail-item">
+                    <label>Inquiry Desk</label>
+                    <p>Nitin Joshi: 98260 60413 <br> Sachin Joshi: 99775 58987 <br> Vipin Joshi: 9977120600 </p>
+                </div>
+                <div class="detail-item">
+                    <label>Email Support</label>
+                    <p>joshisprinters@gmail.com</p>
+                </div>
+            </div>
+            <div class="qr-side">
+                <img src="002.png" alt="Google Maps QR Code">
+                <p style="color: #fff; letter-spacing: 3px; font-size: 0.65rem; opacity: 0.6; font-weight: 700;">SCAN FOR LOCATION</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>COPYRIGHT © 2026 JOSHI'S PRINTERS BHOPAL. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <script>
+        // Nav shrink
+        window.addEventListener('scroll', function() {
+            document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 80);
+        });
+
+        // Mobile menu
+        document.getElementById('mobile-menu').addEventListener('click', () => {
+            document.getElementById('nav-menu').classList.toggle('active');
+        });
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('nav-menu').classList.remove('active');
+            });
+        });
+
+        // Scroll reveal
+        function reveal() {
+            document.querySelectorAll(".reveal").forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight - 150) {
+                    el.classList.add("active");
+                }
+            });
+        }
+        window.addEventListener("scroll", reveal);
+        reveal();
+
+        // Filter tabs
+        function filterCards(category, btn) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.querySelectorAll('.work-card').forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                    setTimeout(() => card.style.opacity = '1', 10);
+                } else {
+                    card.style.opacity = '0';
+                    setTimeout(() => card.style.display = 'none', 300);
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
