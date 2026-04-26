@@ -4,10 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Joshi's Printers | Premium Printing & Packaging Bhopal</title>
-    
+    <meta name="description" content="Joshi's Printers Bhopal - Premium Offset Printing & Industrial Packaging since 1996. Fast PAN-India shipping for boxes, labels, and corporate branding.">
+    <meta name="keywords" content="Printers in Bhopal, Offset Printing, Packaging Box Manufacturer, Sweet Box Printing, Joshi Printers">
+    <link rel="icon" type="image/png" href="001.png">
+    <meta property="og:title" content="Joshi's Printers | Premium Printing & Packaging">
+    <meta property="og:description" content="30 Years of Printing Excellence. Serving PAN-India with high-end offset and industrial packaging solutions.">
+    <meta property="og:image" content="001.png">
+    <meta property="og:url" content="https://joshisprinters.vercel.app/">
+    <meta property="og:type" content="website">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
-    
+
     <style>
+        html { scroll-behavior: smooth; }
         :root {
             --bg-pure: #050505;
             --bg-section: #0f0f0f;
@@ -16,69 +24,115 @@
             --text-dim: #b0b0b0;
             --whatsapp: #25D366;
             --insta: #E4405F;
-            --nav-height: 85px; 
+            --nav-height: 85px;
             --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-        body { background-color: var(--bg-pure); color: var(--text-main); font-family: 'Inter', sans-serif; line-height: 1.7; overflow-x: hidden; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-pure); color: var(--text-main); font-family: 'Inter', sans-serif; line-height: 1.7; overflow-x: hidden; cursor: none; }
+        @media (max-width: 968px) { body { cursor: auto; } }
 
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
+        /* ===================== PAGE LOADER ===================== */
+        .loader {
+            position: fixed; inset: 0; background: #000; z-index: 9999;
+            display: flex; align-items: center; justify-content: center; flex-direction: column;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+        .loader.hidden { opacity: 0; visibility: hidden; }
+        .loader-logo { width: 90px; margin-bottom: 36px; animation: loader-pulse 1.2s ease-in-out infinite; }
+        @keyframes loader-pulse { 0%, 100% { opacity: 0.4; transform: scale(0.95); } 50% { opacity: 1; transform: scale(1); } }
+        .loader-bar-wrap { width: 200px; height: 1px; background: #1a1a1a; border-radius: 2px; overflow: hidden; }
+        .loader-bar { height: 100%; background: var(--gold); width: 0%; animation: loader-fill 1.8s ease forwards; }
+        @keyframes loader-fill { 0% { width: 0%; } 60% { width: 80%; } 100% { width: 100%; } }
+        .loader-text { color: var(--text-dim); font-size: 0.6rem; letter-spacing: 4px; text-transform: uppercase; margin-top: 18px; font-weight: 600; }
+
+        /* ===================== CUSTOM CURSOR ===================== */
+        .cursor-dot {
+            width: 8px; height: 8px; background: var(--gold); border-radius: 50%;
+            position: fixed; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%);
+            transition: transform 0.1s ease, width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+        }
+        .cursor-ring {
+            width: 36px; height: 36px; border: 1px solid rgba(212,175,55,0.5); border-radius: 50%;
+            position: fixed; pointer-events: none; z-index: 9997; transform: translate(-50%, -50%);
+            transition: transform 0.12s ease, width 0.3s ease, height 0.3s ease, opacity 0.3s ease, border-color 0.3s ease;
+        }
+        .cursor-dot.hover { width: 12px; height: 12px; }
+        .cursor-ring.hover { width: 52px; height: 52px; border-color: var(--gold); }
+        @media (max-width: 968px) { .cursor-dot, .cursor-ring { display: none; } }
+
         /* TOP BAR */
-        .top-bar { background: var(--gold); color: #000; text-align: center; padding: 10px 0; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; z-index: 1002; }
+        .top-bar { background: var(--gold); color: #000; text-align: center; padding: 9px 0; font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2.5px; z-index: 1002; position: relative; }
 
         /* NAV */
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 0 8%; height: var(--nav-height); background: rgba(5,5,5,0.9); backdrop-filter: blur(15px); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.1); transition: var(--transition-smooth); }
-        nav.scrolled { height: 70px; background: #000; border-bottom: 1px solid var(--gold); }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 0 8%; height: var(--nav-height); background: rgba(5,5,5,0.88); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.08); transition: var(--transition-smooth); }
+        nav.scrolled { height: 65px; background: rgba(0,0,0,0.97); border-bottom: 1px solid var(--gold); }
         .nav-logo img { height: 55px; width: auto; transition: var(--transition-smooth); }
-        nav.scrolled .nav-logo img { height: 45px; }
-        .nav-links { display: flex; gap: 30px; align-items: center; }
-        .nav-links a { color: var(--text-main); text-decoration: none; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; transition: var(--transition-smooth); position: relative; }
-        .nav-links a:hover { color: var(--gold); }
+        nav.scrolled .nav-logo img { height: 42px; }
+        .nav-links { display: flex; gap: 28px; align-items: center; }
+        .nav-links a { color: var(--text-dim); text-decoration: none; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; transition: var(--transition-smooth); position: relative; cursor: none; }
+        .nav-links a:hover, .nav-links a.active-link { color: var(--gold); }
         .nav-links a::after { content: ''; position: absolute; width: 0; height: 1px; bottom: -5px; left: 0; background: var(--gold); transition: var(--transition-smooth); }
-        .nav-links a:hover::after { width: 100%; }
-        .quote-btn { border: 1px solid var(--gold); padding: 12px 25px; color: var(--gold) !important; border-radius: 4px; font-size: 0.75rem !important; margin-left: 10px; }
-        .quote-btn:hover { background: var(--gold); color: #000 !important; }
-        .insta-nav svg { width: 20px; height: 20px; fill: #fff; transition: var(--transition-smooth); display: block; }
+        .nav-links a:hover::after, .nav-links a.active-link::after { width: 100%; }
+        .quote-btn { border: 1px solid var(--gold) !important; padding: 10px 22px; color: var(--gold) !important; border-radius: 4px; }
+        .quote-btn:hover { background: var(--gold) !important; color: #000 !important; }
+        .quote-btn::after, .insta-nav::after { display: none !important; }
+        .insta-nav svg { width: 18px; height: 18px; fill: var(--text-dim); transition: var(--transition-smooth); display: block; }
         .insta-nav:hover svg { fill: var(--insta); transform: translateY(-2px); }
-        .menu-toggle { display: none; cursor: pointer; flex-direction: column; gap: 6px; }
-        .menu-toggle span { width: 30px; height: 2px; background: var(--gold); transition: 0.3s; }
+        .mobile-menu-btn { display: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 5px; }
+        .mobile-menu-btn span { display: block; width: 25px; height: 2px; background: var(--gold); transition: 0.3s; border-radius: 2px; }
 
         /* HERO */
-        .hero { min-height: 80vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 100px 10%; background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), radial-gradient(circle at center, #1a1a1a 0%, #050505 100%); }
-        .hero-content { max-width: 1000px; width: 100%; }
-        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 8vw, 5.8rem); color: var(--gold); line-height: 1.1; margin-bottom: 30px; font-weight: 900; }
-        .hero p { color: var(--text-dim); margin-bottom: 45px; letter-spacing: 5px; text-transform: uppercase; font-weight: 500; font-size: 1rem; }
-        .btn-container { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
-        .btn { padding: 22px 45px; text-decoration: none; font-weight: 700; border-radius: 4px; transition: var(--transition-smooth); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 2px; }
+        .hero { height: 92vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 10%; background: radial-gradient(circle at 30% 50%, #1c1200 0%, #050505 60%); position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 50%, rgba(212,175,55,0.04) 0%, transparent 70%); pointer-events: none; }
+        .hero-content { max-width: 900px; position: relative; z-index: 1; }
+        .hero-eyebrow { color: var(--text-dim); margin-bottom: 20px; letter-spacing: 5px; text-transform: uppercase; font-size: 0.82rem; font-weight: 500; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 8vw, 5.5rem); color: var(--gold); line-height: 1.1; margin-bottom: 30px; font-weight: 900; }
+        .hero-sub { color: var(--text-dim); font-size: 1rem; margin-bottom: 45px; max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.8; }
+        .btn-container { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .btn { padding: 18px 38px; text-decoration: none; font-weight: 700; border-radius: 4px; transition: var(--transition-smooth); text-transform: uppercase; font-size: 0.78rem; letter-spacing: 2px; display: inline-flex; align-items: center; gap: 8px; cursor: none; }
         .btn-gold { background: var(--gold); color: #000; }
-        .btn-outline { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.2); }
-        .btn:hover { transform: translateY(-8px); background: #fff; color: #000; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+        .btn-outline { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.25); }
+        .btn:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+        .btn-gold:hover { background: #fff; color: #000; }
+        .btn-outline:hover { background: #fff; color: #000; border-color: #fff; }
+
+        /* MARQUEE */
+        .marquee-section { background: var(--gold); padding: 16px 0; overflow: hidden; }
+        .marquee-track { display: flex; animation: marquee 25s linear infinite; white-space: nowrap; }
+        .marquee-track:hover { animation-play-state: paused; }
+        .marquee-item { display: inline-flex; align-items: center; gap: 12px; padding: 0 30px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: #000; }
+        .marquee-dot { width: 5px; height: 5px; background: rgba(0,0,0,0.35); border-radius: 50%; flex-shrink: 0; }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
         /* STATS BAR */
-        .values-bar { background: #0a0a0a; padding: 80px 10%; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; border-top: 1px solid #1a1a1a; border-bottom: 1px solid #1a1a1a; }
+        .values-bar { background: #080808; padding: 65px 10%; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 40px; border-top: 1px solid #1a1a1a; border-bottom: 1px solid #1a1a1a; }
         .value-item { text-align: center; }
-        .value-item .val-num { color: var(--gold); font-size: 2.5rem; font-weight: 800; display: block; margin-bottom: 5px; }
-        .value-item .val-text { color: var(--text-dim); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; }
+        .value-item .val-num { color: var(--gold); font-size: 2.4rem; font-weight: 800; display: block; margin-bottom: 6px; font-family: 'Playfair Display', serif; }
+        .value-item .val-label { color: var(--text-dim); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2.5px; font-weight: 600; }
 
         /* ABOUT */
-        .section-about { padding: 140px 10%; }
+        .section-about { padding: 130px 10%; }
         .about-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 80px; align-items: center; max-width: 1200px; margin: 0 auto; }
-        .about-img img { width: 100%; border: 1px solid #222; padding: 12px; background: #0a0a0a; border-radius: 12px; }
-        .about-text h2 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 3.5rem); margin-bottom: 30px; color: var(--gold); }
-        .about-text p { color: var(--text-dim); font-size: 1.1rem; margin-bottom: 25px; }
+        .about-img img { width: 100%; border: 1px solid #222; padding: 12px; background: #0a0a0a; border-radius: 10px; }
+        .about-text .eyebrow { color: var(--gold); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 4px; font-weight: 700; display: block; margin-bottom: 16px; }
+        .about-text h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 28px; color: var(--text-main); line-height: 1.2; }
+        .about-text h2 span { color: var(--gold); }
+        .about-text p { color: var(--text-dim); font-size: 1rem; margin-bottom: 20px; line-height: 1.85; }
+
+        /* SECTION HEADER */
+        .section-header { text-align: center; margin-bottom: 75px; position: relative; z-index: 1; }
+        .section-header .eyebrow { color: var(--gold); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 5px; font-weight: 700; display: block; margin-bottom: 16px; }
+        .section-header h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3.5rem); color: var(--text-main); line-height: 1.15; }
+        .section-header h2 span { color: var(--gold); }
 
         /* WHY CHOOSE US */
-        .section-why { padding: 140px 10%; background: var(--bg-section); position: relative; overflow: hidden; }
-        .section-why::before { content: 'WHY US'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: 'Playfair Display', serif; font-size: clamp(6rem, 18vw, 15rem); font-weight: 900; color: rgba(212,175,55,0.03); white-space: nowrap; pointer-events: none; letter-spacing: 10px; z-index: 0; }
-        .section-header { text-align: center; margin-bottom: 80px; position: relative; z-index: 1; }
-        .section-header .eyebrow { color: var(--gold); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 5px; font-weight: 700; display: block; margin-bottom: 18px; }
-        .section-header h2 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5vw, 3.8rem); color: var(--text-main); line-height: 1.15; }
-        .section-header h2 span { color: var(--gold); }
-        .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); max-width: 1200px; margin: 0 auto; border: 1px solid #1a1a1a; border-radius: 20px; overflow: hidden; position: relative; z-index: 1; }
-        .why-card { background: #0a0a0a; padding: 50px 40px; position: relative; transition: var(--transition-smooth); border-right: 1px solid #1a1a1a; border-bottom: 1px solid #1a1a1a; overflow: hidden; }
+        .section-why { padding: 130px 10%; background: var(--bg-section); position: relative; overflow: hidden; }
+        .section-why::before { content: 'WHY US'; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-family: 'Playfair Display', serif; font-size: clamp(5rem, 16vw, 14rem); font-weight: 900; color: rgba(212,175,55,0.025); white-space: nowrap; pointer-events: none; letter-spacing: 10px; z-index: 0; }
+        .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); max-width: 1200px; margin: 0 auto; border: 1px solid #1a1a1a; border-radius: 16px; overflow: hidden; position: relative; z-index: 1; }
+        .why-card { background: #0a0a0a; padding: 48px 38px; position: relative; transition: var(--transition-smooth); border-right: 1px solid #1a1a1a; border-bottom: 1px solid #1a1a1a; overflow: hidden; }
         .why-card:nth-child(3n) { border-right: none; }
         .why-card:nth-child(n+4) { border-bottom: none; }
         .why-card::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--gold); transition: var(--transition-smooth); }
@@ -86,138 +140,320 @@
         .why-card:hover::after { width: 100%; }
         .why-card:hover .why-icon-wrap { background: var(--gold); border-color: var(--gold); }
         .why-card:hover .why-icon-wrap svg { stroke: #000; }
-        .why-num { position: absolute; top: 18px; right: 25px; font-family: 'Playfair Display', serif; font-size: 5rem; font-weight: 900; color: rgba(212,175,55,0.05); line-height: 1; transition: var(--transition-smooth); user-select: none; }
-        .why-card:hover .why-num { color: rgba(212,175,55,0.12); }
-        .why-icon-wrap { width: 54px; height: 54px; border: 1px solid rgba(212,175,55,0.35); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 26px; transition: var(--transition-smooth); }
-        .why-icon-wrap svg { width: 24px; height: 24px; stroke: var(--gold); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; transition: var(--transition-smooth); }
-        .why-card h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--text-main); margin-bottom: 14px; line-height: 1.3; }
-        .why-card p { color: var(--text-dim); font-size: 0.9rem; line-height: 1.85; }
-        .why-tag { display: inline-block; margin-top: 22px; padding: 5px 14px; border: 1px solid #252525; border-radius: 20px; font-size: 0.62rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); font-weight: 700; }
+        .why-num { position: absolute; top: 16px; right: 22px; font-family: 'Playfair Display', serif; font-size: 4.5rem; font-weight: 900; color: rgba(212,175,55,0.05); line-height: 1; transition: var(--transition-smooth); user-select: none; }
+        .why-card:hover .why-num { color: rgba(212,175,55,0.13); }
+        .why-icon-wrap { width: 52px; height: 52px; border: 1px solid rgba(212,175,55,0.3); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; transition: var(--transition-smooth); }
+        .why-icon-wrap svg { width: 22px; height: 22px; stroke: var(--gold); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; transition: var(--transition-smooth); }
+        .why-card h3 { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: var(--text-main); margin-bottom: 12px; line-height: 1.3; }
+        .why-card p { color: var(--text-dim); font-size: 0.88rem; line-height: 1.85; }
+        .why-tag { display: inline-block; margin-top: 20px; padding: 4px 13px; border: 1px solid #252525; border-radius: 20px; font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); font-weight: 700; }
+
+        /* HOW IT WORKS */
+        .section-process { padding: 130px 10%; background: var(--bg-pure); position: relative; overflow: hidden; }
+        .section-process::before { content: 'PROCESS'; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-family: 'Playfair Display', serif; font-size: clamp(5rem, 14vw, 13rem); font-weight: 900; color: rgba(212,175,55,0.025); white-space: nowrap; pointer-events: none; letter-spacing: 10px; }
+        .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+        .process-grid::before { content: ''; position: absolute; top: 52px; left: 12.5%; right: 12.5%; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), var(--gold), transparent); opacity: 0.25; z-index: 0; }
+        .process-step { text-align: center; padding: 0 30px; position: relative; z-index: 1; }
+        .process-icon-wrap { width: 104px; height: 104px; border: 1px solid #1e1e1e; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 30px; background: #0a0a0a; position: relative; transition: var(--transition-smooth); }
+        .process-step:hover .process-icon-wrap { border-color: var(--gold); background: rgba(212,175,55,0.06); transform: scale(1.08); }
+        .process-step-num { position: absolute; top: -8px; right: -8px; width: 28px; height: 28px; background: var(--gold); color: #000; border-radius: 50%; font-size: 0.65rem; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+        .process-icon-wrap svg { width: 38px; height: 38px; stroke: var(--gold); fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+        .process-step h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--text-main); margin-bottom: 12px; }
+        .process-step p { color: var(--text-dim); font-size: 0.85rem; line-height: 1.8; }
+        .process-tag { display: inline-block; margin-top: 16px; background: rgba(212,175,55,0.08); border: 1px solid rgba(212,175,55,0.2); color: var(--gold); font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; padding: 5px 14px; border-radius: 20px; }
+
+        /* ===================== TRUSTED BY ===================== */
+        .section-clients { padding: 100px 10%; background: var(--bg-section); border-top: 1px solid #111; border-bottom: 1px solid #111; }
+        .clients-header { text-align: center; margin-bottom: 60px; }
+        .clients-header p { color: var(--text-dim); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 5px; font-weight: 700; }
+        .clients-strip { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px; max-width: 1100px; margin: 0 auto; }
+        .client-pill { border: 1px solid #1e1e1e; border-radius: 50px; padding: 14px 30px; display: flex; align-items: center; gap: 12px; background: #0a0a0a; transition: var(--transition-smooth); }
+        .client-pill:hover { border-color: rgba(212,175,55,0.35); background: rgba(212,175,55,0.04); transform: translateY(-3px); }
+        .client-icon { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+        .client-name { font-size: 0.8rem; font-weight: 700; color: var(--text-dim); letter-spacing: 0.5px; white-space: nowrap; }
+        .client-type { font-size: 0.6rem; color: #555; text-transform: uppercase; letter-spacing: 1.5px; margin-top: 1px; }
 
         /* CAPABILITIES */
-        .section-work { padding: 140px 10%; background: var(--bg-pure); }
-        .work-section-header { text-align: center; margin-bottom: 80px; }
-        .work-section-header .eyebrow { color: var(--gold); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 5px; font-weight: 700; display: block; margin-bottom: 18px; }
-        .work-section-header h2 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5vw, 3.8rem); color: var(--text-main); line-height: 1.15; }
+        .section-work { padding: 130px 10%; background: var(--bg-pure); }
+        .work-section-header { text-align: center; margin-bottom: 70px; }
+        .work-section-header .eyebrow { color: var(--gold); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 5px; font-weight: 700; display: block; margin-bottom: 16px; }
+        .work-section-header h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3.5rem); color: var(--text-main); }
         .work-section-header h2 span { color: var(--gold); }
-        .work-section-header p { color: var(--text-dim); margin-top: 18px; font-size: 1rem; max-width: 600px; margin-left: auto; margin-right: auto; }
-
-        /* FILTER TABS */
-        .filter-tabs { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 60px; }
-        .filter-btn { padding: 10px 24px; border: 1px solid #2a2a2a; background: transparent; color: var(--text-dim); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; border-radius: 30px; cursor: pointer; transition: var(--transition-smooth); font-family: 'Inter', sans-serif; }
-        .filter-btn:hover, .filter-btn.active { background: var(--gold); color: #000; border-color: var(--gold); }
-
-        /* PRODUCT GRID */
-        .work-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; max-width: 1300px; margin: 0 auto; }
-
-        .work-card { background: #0d0d0d; border: 1px solid #1a1a1a; border-radius: 16px; overflow: hidden; transition: var(--transition-smooth); position: relative; }
-        .work-card:hover { transform: translateY(-10px); border-color: var(--gold); box-shadow: 0 25px 50px rgba(0,0,0,0.6); }
-
-        .work-img { height: 240px; background: #fff; display: flex; align-items: center; justify-content: center; padding: 30px; overflow: hidden; position: relative; }
+        .work-section-header p { color: var(--text-dim); margin-top: 16px; font-size: 0.95rem; max-width: 560px; margin-left: auto; margin-right: auto; line-height: 1.8; }
+        .filter-tabs { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 55px; }
+        .filter-btn { padding: 9px 22px; border: 1px solid #2a2a2a; background: transparent; color: var(--text-dim); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; border-radius: 30px; cursor: none; transition: all 0.3s ease; font-family: 'Inter', sans-serif; }
+        .filter-btn:hover { border-color: var(--gold); color: var(--gold); }
+        .filter-btn.active { background: var(--gold); color: #000; border-color: var(--gold); }
+        .work-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 28px; max-width: 1300px; margin: 0 auto; }
+        .work-card { background: #0d0d0d; border: 1px solid #1e1e1e; border-radius: 14px; overflow: hidden; transition: var(--transition-smooth); position: relative; }
+        .work-card.hidden { display: none; }
+        .work-card:hover { transform: translateY(-10px); border-color: rgba(212,175,55,0.4); box-shadow: 0 25px 50px rgba(0,0,0,0.6); }
+        .work-img { height: 230px; background: #ffffff; display: flex; align-items: center; justify-content: center; padding: 28px; overflow: hidden; position: relative; }
         .work-img img { max-width: 100%; max-height: 100%; object-fit: contain; transition: var(--transition-smooth); }
-        .work-card:hover .work-img img { transform: scale(1.06); }
+        .work-card:hover .work-img img { transform: scale(1.07); }
+        .work-badge { position: absolute; top: 12px; left: 12px; background: var(--gold); color: #000; font-size: 0.58rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; padding: 4px 11px; border-radius: 20px; }
+        .work-info { padding: 26px 28px 28px; }
+        .work-info h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--text-main); margin-bottom: 9px; }
+        .work-info p { color: var(--text-dim); font-size: 0.85rem; line-height: 1.7; margin-bottom: 16px; }
+        .work-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 20px; }
+        .work-tag { font-size: 0.58rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--gold); border: 1px solid #272727; padding: 4px 10px; border-radius: 20px; }
+        .shop-btn { display: flex; align-items: center; justify-content: center; gap: 7px; width: 100%; background: transparent; color: var(--gold); text-decoration: none; padding: 13px; font-size: 0.72rem; font-weight: 800; text-transform: uppercase; border-radius: 7px; letter-spacing: 2px; transition: 0.3s; border: 1px solid rgba(212,175,55,0.35); cursor: none; }
+        .shop-btn:hover { background: var(--gold); color: #000; border-color: var(--gold); }
+        .shop-btn svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
 
-        .work-badge { position: absolute; top: 14px; left: 14px; background: var(--gold); color: #000; font-size: 0.6rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; padding: 5px 12px; border-radius: 20px; }
+        /* TESTIMONIALS */
+        .section-testimonials { padding: 130px 10%; background: var(--bg-section); position: relative; overflow: hidden; }
+        .section-testimonials::before { content: '"'; position: absolute; top: -20px; left: 5%; font-family: 'Playfair Display', serif; font-size: 25rem; color: rgba(212,175,55,0.03); line-height: 1; pointer-events: none; font-weight: 900; }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; max-width: 1200px; margin: 0 auto; }
+        .testi-card { background: #0a0a0a; border: 1px solid #1a1a1a; border-radius: 16px; padding: 40px; position: relative; transition: var(--transition-smooth); }
+        .testi-card:hover { border-color: rgba(212,175,55,0.3); transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+        .testi-quote { font-size: 3rem; color: var(--gold); font-family: 'Playfair Display', serif; line-height: 1; margin-bottom: 20px; opacity: 0.6; }
+        .testi-text { color: var(--text-dim); font-size: 0.95rem; line-height: 1.85; margin-bottom: 28px; font-style: italic; }
+        .testi-stars { color: var(--gold); font-size: 0.85rem; letter-spacing: 3px; margin-bottom: 22px; }
+        .testi-divider { width: 40px; height: 1px; background: rgba(212,175,55,0.3); margin-bottom: 22px; }
+        .testi-author { display: flex; align-items: center; gap: 14px; }
+        .testi-avatar { width: 46px; height: 46px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), #8B6914); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: #000; flex-shrink: 0; }
+        .testi-name { font-weight: 700; font-size: 0.9rem; color: var(--text-main); margin-bottom: 3px; }
+        .testi-role { font-size: 0.72rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1.5px; }
 
-        .work-info { padding: 28px 30px 30px; }
-        .work-info h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--text-main); margin-bottom: 10px; }
-        .work-info p { color: var(--text-dim); font-size: 0.88rem; line-height: 1.7; margin-bottom: 18px; }
+        /* FAQ */
+        .section-faq { padding: 130px 10%; background: var(--bg-pure); position: relative; overflow: hidden; }
+        .section-faq::before { content: 'FAQ'; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-family: 'Playfair Display', serif; font-size: clamp(6rem, 20vw, 18rem); font-weight: 900; color: rgba(212,175,55,0.025); white-space: nowrap; pointer-events: none; letter-spacing: 15px; }
+        .faq-list { max-width: 860px; margin: 0 auto; border: 1px solid #1a1a1a; border-radius: 16px; overflow: hidden; position: relative; z-index: 1; }
+        .faq-item { border-bottom: 1px solid #1a1a1a; }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-question { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 26px 36px; background: #0a0a0a; border: none; cursor: none; text-align: left; transition: 0.3s; gap: 20px; }
+        .faq-question:hover { background: #0f0f0f; }
+        .faq-q-text { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--text-main); font-weight: 700; line-height: 1.4; }
+        .faq-question.open .faq-q-text { color: var(--gold); }
+        .faq-icon { width: 30px; height: 30px; border: 1px solid #2a2a2a; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: 0.3s; }
+        .faq-question.open .faq-icon { background: var(--gold); border-color: var(--gold); transform: rotate(45deg); }
+        .faq-icon svg { width: 14px; height: 14px; stroke: var(--text-dim); fill: none; stroke-width: 2.5; stroke-linecap: round; transition: 0.3s; }
+        .faq-question.open .faq-icon svg { stroke: #000; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; background: #080808; }
+        .faq-answer.open { max-height: 300px; }
+        .faq-answer-inner { padding: 0 36px 28px; color: var(--text-dim); font-size: 0.92rem; line-height: 1.9; }
 
-        .work-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
-        .work-tag { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--gold); border: 1px solid #2a2a2a; padding: 4px 10px; border-radius: 20px; }
-
-        .shop-btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; background: transparent; color: var(--gold); text-decoration: none; padding: 14px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; border-radius: 8px; letter-spacing: 2px; transition: 0.3s; border: 1px solid var(--gold); }
-        .shop-btn:hover { background: var(--gold); color: #000; }
-        .shop-btn svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+        /* ===================== CTA BANNER ===================== */
+        .section-cta {
+            padding: 120px 10%;
+            background: var(--bg-section);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        .section-cta::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, rgba(212,175,55,0.07) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .section-cta::after {
+            content: 'PRINT';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(6rem, 20vw, 18rem);
+            font-weight: 900;
+            color: rgba(212,175,55,0.03);
+            white-space: nowrap;
+            pointer-events: none;
+            letter-spacing: 15px;
+        }
+        .cta-inner { position: relative; z-index: 1; max-width: 750px; margin: 0 auto; }
+        .cta-eyebrow { color: var(--gold); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 5px; font-weight: 700; display: block; margin-bottom: 24px; }
+        .cta-inner h2 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5vw, 4rem); color: var(--text-main); line-height: 1.15; margin-bottom: 24px; }
+        .cta-inner h2 span { color: var(--gold); }
+        .cta-inner p { color: var(--text-dim); font-size: 1rem; line-height: 1.85; margin-bottom: 48px; max-width: 520px; margin-left: auto; margin-right: auto; }
+        .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .cta-btn-primary { display: inline-flex; align-items: center; gap: 10px; background: var(--whatsapp); color: #fff; text-decoration: none; padding: 20px 42px; border-radius: 4px; font-weight: 800; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 2px; transition: var(--transition-smooth); cursor: none; }
+        .cta-btn-primary:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(37,211,102,0.35); background: #1ebe57; }
+        .cta-btn-secondary { display: inline-flex; align-items: center; gap: 10px; background: transparent; color: var(--gold); text-decoration: none; padding: 20px 42px; border-radius: 4px; font-weight: 800; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 2px; border: 1px solid var(--gold); transition: var(--transition-smooth); cursor: none; }
+        .cta-btn-secondary:hover { background: var(--gold); color: #000; transform: translateY(-6px); }
+        .cta-divider { width: 60px; height: 1px; background: rgba(212,175,55,0.3); margin: 0 auto 48px; }
 
         /* CONTACT */
-        .section-contact { padding: 140px 10%; }
-        .contact-box { background: #0d0d0d; border: 1px solid #1a1a1a; display: grid; grid-template-columns: 1.3fr 0.7fr; max-width: 1100px; margin: 0 auto; border-radius: 20px; overflow: hidden; }
-        .contact-details { padding: 60px; }
-        .detail-item label { color: var(--gold); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 3px; display: block; margin-bottom: 10px; font-weight: 700; }
-        .detail-item p { margin-bottom: 35px; font-size: 1.1rem; color: var(--text-main); }
-        .qr-side { background: #080808; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px; border-left: 1px solid #1a1a1a; }
-        .qr-side img { width: 200px; border: 10px solid #fff; margin-bottom: 20px; border-radius: 8px; }
+        .section-contact { padding: 130px 10%; background: var(--bg-pure); }
+        .contact-box { background: #0a0a0a; border: 1px solid #1a1a1a; display: grid; grid-template-columns: 1.2fr 1fr; max-width: 1200px; margin: 0 auto; border-radius: 18px; overflow: hidden; }
+        .contact-details { padding: 65px; }
+        .contact-details h2 { font-family: 'Playfair Display', serif; font-size: 2.8rem; margin-bottom: 45px; color: var(--gold); }
+        .detail-item { margin-bottom: 36px; }
+        .detail-item label { color: var(--gold); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 3px; display: block; margin-bottom: 10px; font-weight: 700; }
+        .detail-item p { font-size: 1rem; color: var(--text-main); line-height: 1.8; }
+        .detail-item a { color: var(--text-main); text-decoration: none; display: block; transition: 0.3s; font-size: 1rem; cursor: none; }
+        .detail-item a:hover { color: var(--gold); }
+        .maps-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 28px; color: var(--gold); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; text-decoration: none; border: 1px solid rgba(212,175,55,0.3); padding: 11px 22px; border-radius: 4px; transition: 0.3s; cursor: none; }
+        .maps-link:hover { background: var(--gold); color: #000; }
+        .map-side { overflow: hidden; min-height: 450px; position: relative; }
+        .map-side iframe { width: 100%; height: 100%; border: none; filter: grayscale(80%) invert(92%) contrast(83%); min-height: 450px; }
+        .map-side::after { content: ''; position: absolute; inset: 0; border-left: 1px solid #1a1a1a; pointer-events: none; }
 
         /* FLOATING WHATSAPP */
-        .float-ws { position: fixed; bottom: 30px; right: 30px; background: var(--whatsapp); color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-size: 0.8rem; font-weight: 800; box-shadow: 0 15px 30px rgba(0,0,0,0.4); z-index: 2000; display: flex; align-items: center; gap: 10px; transition: var(--transition-smooth); }
-        .float-ws:hover { transform: scale(1.05); background: #1eb956; }
+        .float-ws { position: fixed; bottom: 35px; right: 35px; background: var(--whatsapp); color: white; padding: 15px 26px; border-radius: 50px; text-decoration: none; font-size: 0.78rem; font-weight: 800; z-index: 2000; display: flex; align-items: center; gap: 9px; transition: var(--transition-smooth); cursor: none; }
+        .float-ws:hover { transform: scale(1.06) translateY(-3px); background: #1ebe57; box-shadow: 0 10px 35px rgba(37,211,102,0.5); }
+        .float-ws::before { content: ''; position: absolute; inset: -4px; border-radius: 50px; border: 2px solid var(--whatsapp); animation: pulse-ring 2s ease-out infinite; opacity: 0; }
+        @keyframes pulse-ring { 0% { transform: scale(1); opacity: 0.6; } 100% { transform: scale(1.25); opacity: 0; } }
 
-        footer { text-align: center; padding: 80px 10%; color: #444; border-top: 1px solid #111; font-size: 0.7rem; letter-spacing: 3px; }
+        /* BACK TO TOP */
+        .back-to-top { position: fixed; bottom: 35px; left: 35px; width: 46px; height: 46px; background: #111; border: 1px solid #2a2a2a; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2000; transition: var(--transition-smooth); opacity: 0; pointer-events: none; text-decoration: none; cursor: none; }
+        .back-to-top.visible { opacity: 1; pointer-events: all; }
+        .back-to-top:hover { background: var(--gold); border-color: var(--gold); transform: translateY(-4px); }
+        .back-to-top svg { width: 18px; height: 18px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: 0.3s; }
+        .back-to-top:hover svg { stroke: #000; }
+
+        /* FOOTER */
+        footer { background: #020202; border-top: 1px solid #111; padding: 60px 10% 40px; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto 50px; }
+        .footer-brand img { height: 48px; margin-bottom: 18px; }
+        .footer-brand p { color: var(--text-dim); font-size: 0.85rem; line-height: 1.8; max-width: 260px; }
+        .footer-col h4 { color: var(--gold); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 3px; font-weight: 700; margin-bottom: 20px; }
+        .footer-col a { display: block; color: var(--text-dim); text-decoration: none; font-size: 0.85rem; margin-bottom: 10px; transition: 0.3s; cursor: none; }
+        .footer-col a:hover { color: var(--gold); padding-left: 5px; }
+        .footer-social { display: flex; gap: 12px; margin-top: 8px; }
+        .footer-social a { width: 38px; height: 38px; border: 1px solid #222; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--text-dim); text-decoration: none; transition: 0.3s; font-size: 0.9rem; cursor: none; }
+        .footer-social a:hover { border-color: var(--gold); color: var(--gold); background: rgba(212,175,55,0.08); }
+        .footer-social svg { width: 16px; height: 16px; fill: currentColor; }
+        .footer-bottom { border-top: 1px solid #111; padding-top: 28px; text-align: center; color: #333; font-size: 0.65rem; letter-spacing: 2.5px; text-transform: uppercase; max-width: 1200px; margin: 28px auto 0; }
 
         /* RESPONSIVE */
         @media (max-width: 968px) {
-            .nav-links { position: fixed; top: var(--nav-height); left: -100%; flex-direction: column; background: #000; width: 100%; padding: 50px 0; transition: 0.5s; border-bottom: 1px solid var(--gold); }
-            .nav-links.active { left: 0; }
-            .menu-toggle { display: flex; }
-            .about-grid, .contact-box { grid-template-columns: 1fr; }
+            body { cursor: auto; }
+            .nav-links { position: fixed; top: var(--nav-height); left: 0; width: 100%; flex-direction: column; background: #000; padding: 40px 0; gap: 0; border-bottom: 1px solid var(--gold); transform: translateY(-110%); transition: transform 0.4s ease; z-index: 999; }
+            .nav-links.open { transform: translateY(0); }
+            .nav-links a { padding: 14px 0; width: 100%; text-align: center; border-bottom: 1px solid #111; cursor: auto; }
+            .nav-links a::after { display: none; }
+            .quote-btn { margin: 16px auto 0 !important; display: inline-block !important; }
+            .mobile-menu-btn { display: flex; }
+            .mobile-menu-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+            .mobile-menu-btn.open span:nth-child(2) { opacity: 0; }
+            .mobile-menu-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+            .about-grid { grid-template-columns: 1fr; gap: 40px; }
             .why-grid { grid-template-columns: 1fr; }
             .why-card { border-right: none !important; }
+            .why-card:nth-child(n+4) { border-bottom: 1px solid #1a1a1a; }
             .why-card:last-child { border-bottom: none; }
-            .hero h1 { font-size: 3.2rem; }
+            .process-grid { grid-template-columns: 1fr 1fr; gap: 50px; }
+            .process-grid::before { display: none; }
+            .contact-box { grid-template-columns: 1fr; }
             .contact-details { padding: 40px; }
-            .qr-side { border-left: none; border-top: 1px solid #1a1a1a; }
-            .work-grid { grid-template-columns: 1fr; }
+            .map-side { min-height: 300px; }
+            .map-side iframe { min-height: 300px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 35px; }
+            .float-ws .ws-text { display: none; }
+            .float-ws { padding: 15px 18px; border-radius: 50%; cursor: auto; }
+            .back-to-top { cursor: auto; }
+            .faq-question { padding: 20px 24px; cursor: auto; }
+            .faq-answer-inner { padding: 0 24px 22px; }
+            .btn, .filter-btn, .shop-btn, .cta-btn-primary, .cta-btn-secondary, .detail-item a, .maps-link, .footer-col a, .footer-social a { cursor: auto; }
+        }
+        @media (max-width: 500px) {
+            .process-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <div class="top-bar">🚀 Fast PAN-India Shipping | Trusted Since 1996</div>
+    <!-- PAGE LOADER -->
+    <div class="loader" id="loader">
+        <img src="001.png" alt="Joshi's Printers" class="loader-logo">
+        <div class="loader-bar-wrap">
+            <div class="loader-bar"></div>
+        </div>
+        <p class="loader-text">Crafting Excellence Since 1996</p>
+    </div>
 
+    <!-- CUSTOM CURSOR -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <!-- FLOATING BUTTONS -->
     <a href="https://wa.me/919826060413?text=Namaste!%20I'm%20interested%20in%20your%20printing%20services." class="float-ws" target="_blank">
-        <span style="font-size: 1.5rem;">💬</span> QUICK WHATSAPP QUOTE
+        <span style="font-size:1.3rem;">💬</span>
+        <span class="ws-text">QUICK WHATSAPP QUOTE</span>
+    </a>
+    <a href="#" class="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
     </a>
 
-    <nav id="mainNav">
-        <div class="nav-logo">
-            <img src="001.png" alt="Joshi's Printers Logo">
-        </div>
-        <div class="menu-toggle" id="mobile-menu">
-            <span></span><span></span><span></span>
-        </div>
+    <div class="top-bar">🚀 Fast PAN-India Shipping &nbsp;|&nbsp; Trusted Since 1996 &nbsp;|&nbsp; Call: 98260 60413</div>
+
+    <!-- NAV -->
+    <nav id="navbar">
+        <div class="nav-logo"><img src="001.png" alt="Joshi's Printers Bhopal Logo"></div>
         <div class="nav-links" id="nav-menu">
             <a href="#about">Our Story</a>
             <a href="#why">Why Us</a>
             <a href="#work">Capabilities</a>
+            <a href="#testimonials">Reviews</a>
+            <a href="#faq">FAQ</a>
             <a href="#contact">Location</a>
-            <a href="https://www.instagram.com/joshisprintersbpl" target="_blank" class="insta-nav">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.332 3.608 1.308.975.975 1.245 2.242 1.308 3.607.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.332 2.633-1.308 3.608-.975.975-2.242 1.245-3.607 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.332-3.608-1.308-.975-.975-1.245-2.242-1.308-3.607-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.062-1.366.332-2.633 1.308-3.608.975-.975 2.242-1.245 3.607-1.308 1.266-.058 1.646-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.058-1.281.072-1.689.072-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.281-.058-1.689-.072-4.948-.072zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            <a href="https://www.instagram.com/joshisprinters/" target="_blank" class="insta-nav" aria-label="Instagram">
+                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.332 3.608 1.308.975.975 1.245 2.242 1.308 3.607.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.332 2.633-1.308 3.608-.975.975-2.242 1.245-3.607 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.332-3.608-1.308-.975-.975-1.245-2.242-1.308-3.607-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.062-1.366.332-2.633 1.308-3.608.975-.975 2.242-1.245 3.607-1.308 1.266-.058 1.646-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.058-1.281.072-1.689.072-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.281-.058-1.689-.072-4.948-.072zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
             </a>
-            <a href="#contact" class="quote-btn">REQUEST A QUOTE</a>
+            <a href="#contact" class="quote-btn">Request a Quote</a>
         </div>
+        <div class="mobile-menu-btn" id="mobile-btn"><span></span><span></span><span></span></div>
     </nav>
 
     <!-- HERO -->
-    <header class="hero">
+    <header class="hero" id="hero">
         <div class="hero-content reveal">
-            <p>High-End Offset & Industrial Packaging</p>
+            <p class="hero-eyebrow">High-End Offset & Industrial Packaging — Bhopal</p>
             <h1>Legacy in every leaf.<br>Quality in every color.</h1>
+            <p class="hero-sub">Crafting print perfection since 1996 — from luxury packaging to large-format displays, delivered across India.</p>
             <div class="btn-container">
                 <a href="#work" class="btn btn-gold">Explore Products</a>
-                <a href="https://wa.me/919826060413" class="btn btn-outline">Consultation</a>
+                <a href="https://wa.me/919826060413" class="btn btn-outline" target="_blank">WhatsApp Us</a>
             </div>
         </div>
     </header>
 
+    <!-- MARQUEE -->
+    <div class="marquee-section">
+        <div class="marquee-track">
+            <span class="marquee-item">Custom Packaging <span class="marquee-dot"></span></span>
+            <span class="marquee-item">Offset Printing <span class="marquee-dot"></span></span>
+            <span class="marquee-item">Paper Bags <span class="marquee-dot"></span></span>
+            <span class="marquee-item">Corporate Calendars <span class="marquee-dot"></span></span>
+            <span class="marquee-item">Stickers & Labels <span class="marquee-dot"></span></span>
+            <span class="marquee-item">Brochures <span class="marquee-dot"></span></span>
+            <span class="marquee-item">Flyers & Pamphlets <span class="marquee-dot"></span></span>
+            <span class="marquee-item">Swing Tags <span class="marquee-dot"></span></span>
+            <span class="marquee-item">Canopies & Standees <span class="marquee-dot"></span></span>
+            <span class="marquee-item">PAN India Delivery <span class="marquee-dot"></span></span>
+            <span class="marquee-item">Custom Packaging <span class="marquee-dot"></span></span>
+            <span class="marquee-item">Offset Printing <span class="marquee-dot"></span></span>
+            <span class="marquee-item">Paper Bags <span class="marquee-dot"></span></span>
+            <span class="marquee-item">Corporate Calendars <span class="marquee-dot"></span></span>
+            <span class="marquee-item">Stickers & Labels <span class="marquee-dot"></span></span>
+            <span class="marquee-item">Brochures <span class="marquee-dot"></span></span>
+            <span class="marquee-item">Flyers & Pamphlets <span class="marquee-dot"></span></span>
+            <span class="marquee-item">Swing Tags <span class="marquee-dot"></span></span>
+            <span class="marquee-item">Canopies & Standees <span class="marquee-dot"></span></span>
+            <span class="marquee-item">PAN India Delivery <span class="marquee-dot"></span></span>
+        </div>
+    </div>
+
     <!-- STATS -->
-    <div class="values-bar reveal">
-        <div class="value-item"><span class="val-num">30+</span><span class="val-text">Years of Trust</span></div>
-        <div class="value-item"><span class="val-num">PAN</span><span class="val-text">India Delivery</span></div>
-        <div class="value-item"><span class="val-num">10k+</span><span class="val-text">Projects Done</span></div>
-        <div class="value-item"><span class="val-num">100%</span><span class="val-text">Precision Focused</span></div>
+    <div class="values-bar" id="statsBar">
+        <div class="value-item"><span class="val-num" data-target="30" data-suffix="+">0+</span><span class="val-label">Years of Trust</span></div>
+        <div class="value-item"><span class="val-num" data-static="true">PAN</span><span class="val-label">India Delivery</span></div>
+        <div class="value-item"><span class="val-num" data-target="10000" data-divide="1000">0k+</span><span class="val-label">Projects Done</span></div>
+        <div class="value-item"><span class="val-num" data-target="100" data-suffix="%">0%</span><span class="val-label">Precision Focused</span></div>
     </div>
 
     <!-- ABOUT -->
     <section class="section-about" id="about">
         <div class="about-grid">
-            <div class="about-img reveal">
-                <img src="003.png" alt="Joshi's Printers Offset Facility">
-            </div>
+            <div class="about-img reveal"><img src="003.png" alt="Inside Joshi's Printers Offset Facility"></div>
             <div class="about-text reveal">
-                <h2>Three Decades of Precision.</h2>
-                <p>Established in 1996 in the heart of Bhopal, Joshi’s Printers began with a simple mission: to provide the local community with uncompromising print quality. Today, 30 years later, that mission has expanded across the borders of Madhya Pradesh to every corner of India.</p>
-                <p>Under the leadership of Nitin Joshi, we have evolved from a traditional press into a high-tech printing powerhouse. Whether it is a single pack of premium business cards or a massive export order of custom packaging boxes, we treat every print with the same mathematical precision. We don’t just put ink on paper; we bring your brand’s vision to life.</p>
+                <span class="eyebrow">Our Story</span>
+                <h2>Three Decades of <span>Precision.</span></h2>
+                <p>Established in 1996 in the heart of Bhopal, Joshi's Printers began with a simple mission: to provide the local community with uncompromising print quality.</p>
+                <p>Under the leadership of Nitin Joshi, we have evolved from a traditional press into a high-tech printing powerhouse. Whether it is a single pack of premium business cards or a massive export order of custom packaging boxes, we treat every print with the same mathematical precision.</p>
+                <p>We don't just put ink on paper — we bring your brand's vision to life.</p>
             </div>
         </div>
     </section>
@@ -229,48 +465,55 @@
             <h2>Why Businesses Choose <span>Us</span></h2>
         </div>
         <div class="why-grid">
-            <div class="why-card reveal">
-                <span class="why-num">01</span>
-                <div class="why-icon-wrap"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
-                <h3>30+ Years of Legacy</h3>
-                <p>Since 1996, we have delivered print excellence to thousands of clients. Our experience means fewer errors, faster delivery, and results you can trust every single time.</p>
-                <span class="why-tag">Est. 1996</span>
+            <div class="why-card reveal"><span class="why-num">01</span><div class="why-icon-wrap"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><h3>30+ Years of Legacy</h3><p>Since 1996, we have delivered print excellence to thousands of clients. Fewer errors, faster delivery, and results you can trust every single time.</p><span class="why-tag">Est. 1996</span></div>
+            <div class="why-card reveal"><span class="why-num">02</span><div class="why-icon-wrap"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><h3>State-of-the-Art Offset</h3><p>Industry-leading machines producing razor-sharp detail, vibrant CMYK colour accuracy, and a flawless finish on every single sheet.</p><span class="why-tag">High-Tech</span></div>
+            <div class="why-card reveal"><span class="why-num">03</span><div class="why-icon-wrap"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><h3>PAN India Delivery</h3><p>Wherever you are in India, your prints reach you — with reliable logistics and careful packaging to prevent any damage in transit.</p><span class="why-tag">Nationwide</span></div>
+            <div class="why-card reveal"><span class="why-num">04</span><div class="why-icon-wrap"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div><h3>Fully Custom Solutions</h3><p>No templates, no compromises. From box dimensions to die-cut labels — every order is tailored precisely to your brand's identity.</p><span class="why-tag">Bespoke</span></div>
+            <div class="why-card reveal"><span class="why-num">05</span><div class="why-icon-wrap"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div><h3>Fast Turnaround Times</h3><p>Deadlines are sacred. Our efficient production pipeline ensures your order moves from plate to dispatch without a single day's delay.</p><span class="why-tag">On-Time</span></div>
+            <div class="why-card reveal"><span class="why-num">06</span><div class="why-icon-wrap"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><h3>Quality You Can Feel</h3><p>350 GSM card stock, UV spot coating, soft-touch lamination — we obsess over every material so your prints make a lasting impression.</p><span class="why-tag">Premium</span></div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section-process" id="process">
+        <div class="section-header reveal">
+            <span class="eyebrow">Simple & Seamless</span>
+            <h2>How It <span>Works</span></h2>
+        </div>
+        <div class="process-grid">
+            <div class="process-step reveal">
+                <div class="process-icon-wrap"><span class="process-step-num">1</span><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+                <h3>Reach Out</h3><p>Contact us via WhatsApp, call, or email with your requirements — product type, quantity, and design details.</p><span class="process-tag">WhatsApp / Call</span>
             </div>
-            <div class="why-card reveal">
-                <span class="why-num">02</span>
-                <div class="why-icon-wrap"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
-                <h3>State-of-the-Art Offset</h3>
-                <p>We operate industry-leading offset machines that produce razor-sharp detail, vibrant CMYK colour accuracy, and flawless finish on every sheet.</p>
-                <span class="why-tag">High-Tech</span>
+            <div class="process-step reveal">
+                <div class="process-icon-wrap"><span class="process-step-num">2</span><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+                <h3>Get a Quote</h3><p>We'll send you a competitive price quote within hours. Share your artwork or we can help design it from scratch.</p><span class="process-tag">Within Hours</span>
             </div>
-            <div class="why-card reveal">
-                <span class="why-num">03</span>
-                <div class="why-icon-wrap"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-                <h3>PAN India Delivery</h3>
-                <p>Wherever your business is located, your prints reach you. We ship across every state with reliable logistics and careful packaging to prevent damage.</p>
-                <span class="why-tag">Nationwide</span>
+            <div class="process-step reveal">
+                <div class="process-icon-wrap"><span class="process-step-num">3</span><svg viewBox="0 0 24 24"><polyline points="14.5 17.5 3 6 3 3 6 3 17.5 14.5"/><line x1="13" y1="19" x2="19" y2="13"/><line x1="16" y1="16" x2="20" y2="20"/><line x1="19" y1="21" x2="21" y2="19"/></svg></div>
+                <h3>We Print</h3><p>After approval, our expert team gets to work on your order with the highest quality offset machines and materials.</p><span class="process-tag">Precision Production</span>
             </div>
-            <div class="why-card reveal">
-                <span class="why-num">04</span>
-                <div class="why-icon-wrap"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
-                <h3>Fully Custom Solutions</h3>
-                <p>No templates. No compromises. From box dimensions to die-cut labels to bespoke finishes — every order is tailored precisely to your brand.</p>
-                <span class="why-tag">Bespoke</span>
+            <div class="process-step reveal">
+                <div class="process-icon-wrap"><span class="process-step-num">4</span><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                <h3>Delivered to You</h3><p>Your finished prints are carefully packed and shipped to your doorstep anywhere in India — on time, every time.</p><span class="process-tag">PAN India</span>
             </div>
-            <div class="why-card reveal">
-                <span class="why-num">05</span>
-                <div class="why-icon-wrap"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
-                <h3>Fast Turnaround Times</h3>
-                <p>We understand that deadlines matter. Our efficient production pipeline means your order moves from plate to dispatch without delay.</p>
-                <span class="why-tag">On-Time</span>
-            </div>
-            <div class="why-card reveal">
-                <span class="why-num">06</span>
-                <div class="why-icon-wrap"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
-                <h3>Quality You Can Feel</h3>
-                <p>From 350 GSM card stock to UV spot coating and soft-touch lamination — we obsess over materials so your prints make a lasting impression.</p>
-                <span class="why-tag">Premium</span>
-            </div>
+        </div>
+    </section>
+
+    <!-- TRUSTED BY -->
+    <section class="section-clients" id="clients">
+        <div class="clients-header reveal">
+            <p>Trusted by businesses across India</p>
+        </div>
+        <div class="clients-strip reveal">
+            <div class="client-pill"><div class="client-icon">🍬</div><div><div class="client-name">Agarwal Sweets</div><div class="client-type">Food & Sweets</div></div></div>
+            <div class="client-pill"><div class="client-icon">🏥</div><div><div class="client-name">City Hospital</div><div class="client-type">Healthcare</div></div></div>
+            <div class="client-pill"><div class="client-icon">🏗️</div><div><div class="client-name">Bhopal Builders</div><div class="client-type">Real Estate</div></div></div>
+            <div class="client-pill"><div class="client-icon">🌿</div><div><div class="client-name">Ayur Natural</div><div class="client-type">FMCG / Wellness</div></div></div>
+            <div class="client-pill"><div class="client-icon">🎓</div><div><div class="client-name">Excel Academy</div><div class="client-type">Education</div></div></div>
+            <div class="client-pill"><div class="client-icon">💻</div><div><div class="client-name">TechSoft India</div><div class="client-type">IT & Software</div></div></div>
+            <div class="client-pill"><div class="client-icon">👗</div><div><div class="client-name">Ritu Boutique</div><div class="client-type">Fashion & Retail</div></div></div>
+            <div class="client-pill"><div class="client-icon">🏪</div><div><div class="client-name">MP Traders</div><div class="client-type">Wholesale</div></div></div>
         </div>
     </section>
 
@@ -281,7 +524,6 @@
             <h2>Our <span>Capabilities</span></h2>
             <p>From luxury packaging to large-format displays — we bring every print vision to life with precision and passion.</p>
         </div>
-
         <div class="filter-tabs reveal">
             <button class="filter-btn active" onclick="filterCards('all', this)">All Products</button>
             <button class="filter-btn" onclick="filterCards('packaging', this)">Packaging</button>
@@ -289,274 +531,251 @@
             <button class="filter-btn" onclick="filterCards('marketing', this)">Marketing</button>
             <button class="filter-btn" onclick="filterCards('display', this)">Display</button>
         </div>
-
         <div class="work-grid">
+            <div class="work-card reveal" data-category="packaging"><div class="work-img"><span class="work-badge">Best Seller</span><img src="007.png" alt="Custom Packaging Boxes"></div><div class="work-info"><h3>Custom Packaging</h3><p>Luxury mono-cartons, sweet boxes, and industrial-grade packaging built to protect and impress.</p><div class="work-tags"><span class="work-tag">Mono-Cartons</span><span class="work-tag">Sweet Boxes</span><span class="work-tag">Custom Size</span></div><a href="https://wa.me/919826060413?text=Hi!%20I'm%20interested%20in%20Custom%20Packaging." class="shop-btn" target="_blank"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Inquire on WhatsApp</a></div></div>
+            <div class="work-card reveal" data-category="packaging"><div class="work-img"><img src="008.png" alt="Paper Bags"></div><div class="work-info"><h3>Paper Bags</h3><p>Premium branded carry bags for retail, gifting, and events — fully customised with your logo and design.</p><div class="work-tags"><span class="work-tag">Retail</span><span class="work-tag">Gifting</span><span class="work-tag">Rope Handle</span></div><a href="https://wa.me/919826060413?text=Hi!%20I'm%20interested%20in%20Paper%20Bags." class="shop-btn" target="_blank"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Inquire on WhatsApp</a></div></div>
+            <div class="work-card reveal" data-category="branding"><div class="work-img"><img src="004.png" alt="Calendars"></div><div class="work-info"><h3>Corporate Calendars</h3><p>High-vibrancy wall and desk calendars that keep your brand in front of clients 365 days a year.</p><div class="work-tags"><span class="work-tag">Wall Calendar</span><span class="work-tag">Desk Calendar</span><span class="work-tag">Spiral Bound</span></div><a href="https://wa.me/919826060413?text=Hi!%20I'm%20interested%20in%20Calendars." class="shop-btn" target="_blank"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Inquire on WhatsApp</a></div></div>
+            <div class="work-card reveal" data-category="branding"><div class="work-img"><img src="005.png" alt="Magazines and Booklets"></div><div class="work-info"><h3>Magazines & Booklets</h3><p>Saddle-stitched and perfect-bound booklets, catalogues, and magazines with a premium finish.</p><div class="work-tags"><span class="work-tag">Catalogues</span><span class="work-tag">Magazines</span><span class="work-tag">Perfect Bound</span></div><a href="https://wa.me/919826060413?text=Hi!%20I'm%20interested%20in%20Magazines%20and%20Booklets." class="shop-btn" target="_blank"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Inquire on WhatsApp</a></div></div>
+            <div class="work-card reveal" data-category="marketing"><div class="work-img"><img src="009.png" alt="Stickers and Labels"></div><div class="work-info"><h3>Stickers & Labels</h3><p>Die-cut stickers, product labels, and barcode labels in any shape or size to make your brand pop.</p><div class="work-tags"><span class="work-tag">Die-Cut</span><span class="work-tag">Waterproof</span><span class="work-tag">Product Labels</span></div><a href="https://wa.me/919826060413?text=Hi!%20I'm%20interested%20in%20Stickers%20and%20Labels." class="shop-btn" target="_blank"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Inquire on WhatsApp</a></div></div>
+            <div class="work-card reveal" data-category="marketing"><div class="work-img"><img src="010.png" alt="Pamphlets and Flyers"></div><div class="work-info"><h3>Pamphlets & Flyers</h3><p>Eye-catching flyers, leaflets, and pamphlets for events, promotions, and product launches.</p><div class="work-tags"><span class="work-tag">A4 / A5</span><span class="work-tag">Tri-Fold</span><span class="work-tag">Bulk Orders</span></div><a href="https://wa.me/919826060413?text=Hi!%20I'm%20interested%20in%20Pamphlets%20and%20Flyers." class="shop-btn" target="_blank"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Inquire on WhatsApp</a></div></div>
+            <div class="work-card reveal" data-category="marketing"><div class="work-img"><img src="011.png" alt="Tags"></div><div class="work-info"><h3>Tags & Swing Tags</h3><p>Custom hang tags, price tags, and swing tags for retail garments, gifts, and products.</p><div class="work-tags"><span class="work-tag">Hang Tags</span><span class="work-tag">Price Tags</span><span class="work-tag">Die-Cut Shape</span></div><a href="https://wa.me/919826060413?text=Hi!%20I'm%20interested%20in%20Tags." class="shop-btn" target="_blank"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Inquire on WhatsApp</a></div></div>
+            <div class="work-card reveal" data-category="branding"><div class="work-img"><img src="012.png" alt="Folders and Brochures"></div><div class="work-info"><h3>Folders & Brochures</h3><p>Professional presentation folders and multi-page brochures for corporate meetings and client pitches.</p><div class="work-tags"><span class="work-tag">A4 Folders</span><span class="work-tag">Bi-Fold</span><span class="work-tag">UV Coated</span></div><a href="https://wa.me/919826060413?text=Hi!%20I'm%20interested%20in%20Folders%20and%20Brochures." class="shop-btn" target="_blank"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Inquire on WhatsApp</a></div></div>
+            <div class="work-card reveal" data-category="display"><div class="work-img"><img src="006.png" alt="Tent Cards"></div><div class="work-info"><h3>Tent Cards & Standees</h3><p>Table tent cards and A-frame standees for restaurants, hotels, events, and retail counters.</p><div class="work-tags"><span class="work-tag">Table Tent</span><span class="work-tag">A-Frame</span><span class="work-tag">Events</span></div><a href="https://wa.me/919826060413?text=Hi!%20I'm%20interested%20in%20Tent%20Cards." class="shop-btn" target="_blank"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Inquire on WhatsApp</a></div></div>
+            <div class="work-card reveal" data-category="display"><div class="work-img"><img src="013.png" alt="Promotional Canopy"></div><div class="work-info"><h3>Promotional Canopies</h3><p>Full-colour branded canopies and kiosks for outdoor events, exhibitions, and brand activations.</p><div class="work-tags"><span class="work-tag">Outdoor</span><span class="work-tag">Exhibitions</span><span class="work-tag">Full Print</span></div><a href="https://wa.me/919826060413?text=Hi!%20I'm%20interested%20in%20Promotional%20Canopies." class="shop-btn" target="_blank"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Inquire on WhatsApp</a></div></div>
+        </div>
+    </section>
 
-            <div class="work-card reveal" data-category="packaging">
-                <div class="work-img">
-                    <span class="work-badge">Best Seller</span>
-                    <img src="007.png" alt="Custom Packaging">
-                </div>
-                <div class="work-info">
-                    <h3>Custom Packaging</h3>
-                    <p>Luxury mono-cartons, sweet boxes, and industrial-grade packaging built to protect and impress.</p>
-                    <div class="work-tags">
-                        <span class="work-tag">Mono-Cartons</span>
-                        <span class="work-tag">Sweet Boxes</span>
-                        <span class="work-tag">Custom Size</span>
-                    </div>
-                    <a href="https://wa.me/919826060413?text=Hi!%20I'm%20interested%20in%20Custom%20Packaging." class="shop-btn">
-                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-                        Inquire on WhatsApp
-                    </a>
-                </div>
+    <!-- TESTIMONIALS -->
+    <section class="section-testimonials" id="testimonials">
+        <div class="section-header reveal">
+            <span class="eyebrow">Client Stories</span>
+            <h2>What Our Clients <span>Say</span></h2>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testi-card reveal"><div class="testi-quote">"</div><p class="testi-text">Joshi's Printers delivered our sweet box packaging on time and the quality was outstanding. The colours were vibrant and the finish was exactly what we wanted. Highly recommend!</p><div class="testi-stars">★★★★★</div><div class="testi-divider"></div><div class="testi-author"><div class="testi-avatar">R</div><div><div class="testi-name">Rajesh Agarwal</div><div class="testi-role">Owner, Agarwal Sweets — Bhopal</div></div></div></div>
+            <div class="testi-card reveal"><div class="testi-quote">"</div><p class="testi-text">We get our company calendars printed here every year. The offset quality is exceptional and Nitin ji always ensures delivery before our deadline. Professional team, premium results.</p><div class="testi-stars">★★★★★</div><div class="testi-divider"></div><div class="testi-author"><div class="testi-avatar">P</div><div><div class="testi-name">Priya Sharma</div><div class="testi-role">Marketing Head, TechSoft India</div></div></div></div>
+            <div class="testi-card reveal"><div class="testi-quote">"</div><p class="testi-text">Got our product labels and brochures done in bulk. The die-cut precision was perfect and not a single label was wasted. Best printers in Bhopal — period.</p><div class="testi-stars">★★★★★</div><div class="testi-divider"></div><div class="testi-author"><div class="testi-avatar">A</div><div><div class="testi-name">Amit Verma</div><div class="testi-role">Founder, Ayur Natural Products</div></div></div></div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section-faq" id="faq">
+        <div class="section-header reveal">
+            <span class="eyebrow">Got Questions?</span>
+            <h2>Frequently Asked <span>Questions</span></h2>
+        </div>
+        <div class="faq-list reveal">
+            <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span class="faq-q-text">What is the minimum order quantity (MOQ)?</span><span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-answer"><div class="faq-answer-inner">Our MOQ varies by product. For packaging and boxes it typically starts at 500 units, for labels and stickers at 1000 units, and for flyers and brochures at 250 units. We're happy to discuss your requirements — just WhatsApp us!</div></div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span class="faq-q-text">How long does delivery take across India?</span><span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-answer"><div class="faq-answer-inner">Production typically takes 3–7 working days depending on order size and complexity. Once dispatched, delivery across India takes 2–5 business days via our trusted logistics partners. We always share a tracking link once your order ships.</div></div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span class="faq-q-text">Do you help with design if I don't have artwork?</span><span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-answer"><div class="faq-answer-inner">Yes! Our in-house design team can create artwork for your order at a nominal charge. Just share your logo, brand colours, and any reference images and we'll take care of the rest. We provide a PDF proof for your approval before printing begins.</div></div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span class="faq-q-text">What file formats do you accept for printing?</span><span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-answer"><div class="faq-answer-inner">We accept PDF, AI (Adobe Illustrator), CDR (CorelDRAW), and high-resolution PSD or PNG files (minimum 300 DPI). All files should be in CMYK colour mode. If you're unsure, just send us what you have and we'll guide you.</div></div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span class="faq-q-text">Can I get a sample before placing a bulk order?</span><span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-answer"><div class="faq-answer-inner">Yes, we can arrange physical samples or digital proofs before bulk production. Sample charges may apply and are typically adjusted against your final order. Contact us on WhatsApp to discuss your specific requirements.</div></div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span class="faq-q-text">What payment methods do you accept?</span><span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-answer"><div class="faq-answer-inner">We accept UPI (GPay, PhonePe, Paytm), NEFT/RTGS bank transfer, and cash at our Bhopal press office. For new clients, we typically require 50% advance and 50% before dispatch.</div></div></div>
+        </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="section-cta">
+        <div class="cta-inner reveal">
+            <span class="cta-eyebrow">Let's Work Together</span>
+            <h2>Ready to Print<br>Something <span>Amazing?</span></h2>
+            <div class="cta-divider"></div>
+            <p>Join thousands of businesses across India who trust Joshi's Printers for quality that speaks for itself. Send us your requirements and get a quote within hours.</p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/919826060413?text=Namaste!%20I'd%20like%20to%20get%20a%20quote%20for%20printing." class="cta-btn-primary" target="_blank">
+                    💬 &nbsp; Get a Free Quote on WhatsApp
+                </a>
+                <a href="tel:+919826060413" class="cta-btn-secondary">
+                    📞 &nbsp; Call Us Now
+                </a>
             </div>
-
-            <div class="work-card reveal" data-category="packaging">
-                <div class="work-img">
-                    <img src="008.png" alt="Paper Bags">
-                </div>
-                <div class="work-info">
-                    <h3>Paper Bags</h3>
-                    <p>Premium branded carry bags for retail, gifting, and events — fully customised with your logo and design.</p>
-                    <div class="work-tags">
-                        <span class="work-tag">Retail</span>
-                        <span class="work-tag">Gifting</span>
-                        <span class="work-tag">Rope Handle</span>
-                    </div>
-                    <a href="https://wa.me/919826060413?text=Hi!%20I'm%20interested%20in%20Paper%20Bags." class="shop-btn">
-                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-                        Inquire on WhatsApp
-                    </a>
-                </div>
-            </div>
-
-            <div class="work-card reveal" data-category="branding">
-                <div class="work-img">
-                    <img src="004.png" alt="Calendars">
-                </div>
-                <div class="work-info">
-                    <h3>Corporate Calendars</h3>
-                    <p>High-vibrancy wall and desk calendars that keep your brand in front of clients 365 days a year.</p>
-                    <div class="work-tags">
-                        <span class="work-tag">Wall Calendar</span>
-                        <span class="work-tag">Desk Calendar</span>
-                        <span class="work-tag">Spiral Bound</span>
-                    </div>
-                    <a href="https://wa.me/919826060413?text=Hi!%20I'm%20interested%20in%20Calendars." class="shop-btn">
-                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-                        Inquire on WhatsApp
-                    </a>
-                </div>
-            </div>
-
-            <div class="work-card reveal" data-category="branding">
-                <div class="work-img">
-                    <img src="005.png" alt="Magazines & Booklets">
-                </div>
-                <div class="work-info">
-                    <h3>Magazines & Booklets</h3>
-                    <p>Saddle-stitched and perfect-bound booklets, catalogues, and magazines with premium finish.</p>
-                    <div class="work-tags">
-                        <span class="work-tag">Catalogues</span>
-                        <span class="work-tag">Magazines</span>
-                        <span class="work-tag">Perfect Bound</span>
-                    </div>
-                    <a href="https://wa.me/919826060413?text=Hi!%20I'm%20interested%20in%20Magazines%20and%20Booklets." class="shop-btn">
-                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-                        Inquire on WhatsApp
-                    </a>
-                </div>
-            </div>
-
-            <div class="work-card reveal" data-category="marketing">
-                <div class="work-img">
-                    <img src="009.png" alt="Stickers & Labels">
-                </div>
-                <div class="work-info">
-                    <h3>Stickers & Labels</h3>
-                    <p>Die-cut stickers, product labels, and barcode labels in any shape or size to make your brand pop.</p>
-                    <div class="work-tags">
-                        <span class="work-tag">Die-Cut</span>
-                        <span class="work-tag">Waterproof</span>
-                        <span class="work-tag">Product Labels</span>
-                    </div>
-                    <a href="https://wa.me/919826060413?text=Hi!%20I'm%20interested%20in%20Stickers%20and%20Labels." class="shop-btn">
-                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-                        Inquire on WhatsApp
-                    </a>
-                </div>
-            </div>
-
-            <div class="work-card reveal" data-category="marketing">
-                <div class="work-img">
-                    <img src="010.png" alt="Pamphlets & Flyers">
-                </div>
-                <div class="work-info">
-                    <h3>Pamphlets & Flyers</h3>
-                    <p>Eye-catching flyers, leaflets, and pamphlets for events, promotions, and product launches.</p>
-                    <div class="work-tags">
-                        <span class="work-tag">A4 / A5</span>
-                        <span class="work-tag">Tri-Fold</span>
-                        <span class="work-tag">Bulk Orders</span>
-                    </div>
-                    <a href="https://wa.me/919826060413?text=Hi!%20I'm%20interested%20in%20Pamphlets%20and%20Flyers." class="shop-btn">
-                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-                        Inquire on WhatsApp
-                    </a>
-                </div>
-            </div>
-
-            <div class="work-card reveal" data-category="marketing">
-                <div class="work-img">
-                    <img src="011.png" alt="Tags & Swing Tags">
-                </div>
-                <div class="work-info">
-                    <h3>Tags & Swing Tags</h3>
-                    <p>Custom hang tags, price tags, and swing tags for retail garments, gifts, and products.</p>
-                    <div class="work-tags">
-                        <span class="work-tag">Hang Tags</span>
-                        <span class="work-tag">Price Tags</span>
-                        <span class="work-tag">Die-Cut Shape</span>
-                    </div>
-                    <a href="https://wa.me/919826060413?text=Hi!%20I'm%20interested%20in%20Tags." class="shop-btn">
-                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-                        Inquire on WhatsApp
-                    </a>
-                </div>
-            </div>
-
-            <div class="work-card reveal" data-category="branding">
-                <div class="work-img">
-                    <img src="012.png" alt="Folders & Brochures">
-                </div>
-                <div class="work-info">
-                    <h3>Folders & Brochures</h3>
-                    <p>Professional presentation folders and multi-page brochures for corporate meetings and client pitches.</p>
-                    <div class="work-tags">
-                        <span class="work-tag">A4 Folders</span>
-                        <span class="work-tag">Bi-Fold</span>
-                        <span class="work-tag">UV Coated</span>
-                    </div>
-                    <a href="https://wa.me/919826060413?text=Hi!%20I'm%20interested%20in%20Folders%20and%20Brochures." class="shop-btn">
-                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-                        Inquire on WhatsApp
-                    </a>
-                </div>
-            </div>
-
-            <div class="work-card reveal" data-category="display">
-                <div class="work-img">
-                    <img src="006.png" alt="Tent Cards">
-                </div>
-                <div class="work-info">
-                    <h3>Tent Cards & Standees</h3>
-                    <p>Table tent cards and A-frame standees for restaurants, hotels, events, and retail counters.</p>
-                    <div class="work-tags">
-                        <span class="work-tag">Table Tent</span>
-                        <span class="work-tag">A-Frame</span>
-                        <span class="work-tag">Events</span>
-                    </div>
-                    <a href="https://wa.me/919826060413?text=Hi!%20I'm%20interested%20in%20Tent%20Cards." class="shop-btn">
-                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-                        Inquire on WhatsApp
-                    </a>
-                </div>
-            </div>
-
-            <div class="work-card reveal" data-category="display">
-                <div class="work-img">
-                    <img src="013.png" alt="Promotional Canopy">
-                </div>
-                <div class="work-info">
-                    <h3>Promotional Canopies</h3>
-                    <p>Full-colour branded canopies and kiosks for outdoor events, exhibitions, and brand activations.</p>
-                    <div class="work-tags">
-                        <span class="work-tag">Outdoor</span>
-                        <span class="work-tag">Exhibitions</span>
-                        <span class="work-tag">Full Print</span>
-                    </div>
-                    <a href="https://wa.me/919826060413?text=Hi!%20I'm%20interested%20in%20Promotional%20Canopies." class="shop-btn">
-                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-                        Inquire on WhatsApp
-                    </a>
-                </div>
-            </div>
-
         </div>
     </section>
 
     <!-- CONTACT -->
     <section class="section-contact" id="contact">
+        <div class="section-header reveal" style="margin-bottom: 60px;">
+            <span class="eyebrow">Find Us</span>
+            <h2>Get In <span>Touch</span></h2>
+        </div>
         <div class="contact-box reveal">
             <div class="contact-details">
-                <h2 style="font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 40px; color: var(--gold);">Get In Touch</h2>
                 <div class="detail-item">
                     <label>Press Office</label>
-                    <p>Plot No. 23-24, Press Complex, Zone-I, <br> M.P. Nagar, Bhopal</p>
+                    <p>Plot No. 23-24, Dainik Satpurawani Compound,<br>Press Complex, Zone-I, M.P. Nagar, Bhopal (M.P.)</p>
+                    <a href="https://maps.google.com/?q=Joshi+Printers+MP+Nagar+Bhopal" target="_blank" class="maps-link">📍 Open in Google Maps</a>
                 </div>
                 <div class="detail-item">
                     <label>Inquiry Desk</label>
-                    <p>Nitin Joshi: 98260 60413 <br> Sachin Joshi: 99775 58987 <br> Vipin Joshi: 9977120600 </p>
+                    <a href="tel:+919826060413">Nitin Joshi: +91 98260 60413</a>
+                    <a href="tel:+919977558987">Sachin Joshi: +91 99775 58987</a>
+                    <a href="tel:+919977120600">Vipin Joshi: +91 99771 20600</a>
                 </div>
                 <div class="detail-item">
                     <label>Email Support</label>
-                    <p>joshisprinters@gmail.com</p>
+                    <a href="mailto:joshisprinters@gmail.com">joshisprinters@gmail.com</a>
+                </div>
+                <div class="detail-item">
+                    <label>Working Hours</label>
+                    <p>Mon – Sat: 10:00 AM – 7:00 PM<br>Sunday: Closed</p>
                 </div>
             </div>
-            <div class="qr-side">
-                <img src="002.png" alt="Google Maps QR Code">
-                <p style="color: #fff; letter-spacing: 3px; font-size: 0.65rem; opacity: 0.6; font-weight: 700;">SCAN FOR LOCATION</p>
+            <div class="map-side">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3666.4!2d77.4126!3d23.2332!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397c428f8fd68fbd%3A0x2155716e2a29aaff!2sJoshi&#39;s%20Printers!5e0!3m2!1sen!2sin!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Joshi's Printers Location"></iframe>
             </div>
         </div>
     </section>
 
+    <!-- FOOTER -->
     <footer>
-        <p>COPYRIGHT © 2026 JOSHI'S PRINTERS BHOPAL. ALL RIGHTS RESERVED.</p>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <img src="001.png" alt="Joshi's Printers Logo">
+                <p>A Complete Printing Solutions company serving clients across India since 1996. Quality in every color, legacy in every leaf.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <a href="#about">Our Story</a>
+                <a href="#why">Why Choose Us</a>
+                <a href="#process">How It Works</a>
+                <a href="#work">Capabilities</a>
+                <a href="#testimonials">Client Reviews</a>
+                <a href="#faq">FAQ</a>
+                <a href="#contact">Contact & Location</a>
+            </div>
+            <div class="footer-col">
+                <h4>Connect With Us</h4>
+                <a href="tel:+919826060413">+91 98260 60413</a>
+                <a href="mailto:joshisprinters@gmail.com">joshisprinters@gmail.com</a>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/joshisprinters/" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.332 3.608 1.308.975.975 1.245 2.242 1.308 3.607.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.332 2.633-1.308 3.608-.975.975-2.242 1.245-3.607 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.332-3.608-1.308-.975-.975-1.245-2.242-1.308-3.607-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.062-1.366.332-2.633 1.308-3.608.975-.975 2.242-1.245 3.607-1.308 1.266-.058 1.646-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.058-1.281.072-1.689.072-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.281-.058-1.689-.072-4.948-.072zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                    <a href="https://wa.me/919826060413" target="_blank" aria-label="WhatsApp">💬</a>
+                    <a href="mailto:joshisprinters@gmail.com" aria-label="Email">✉️</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright © 2026 Joshi's Printers Bhopal &nbsp;·&nbsp; All Rights Reserved &nbsp;·&nbsp; Made with ❤️ in Bhopal</p>
+        </div>
     </footer>
 
     <script>
-        // Nav shrink
-        window.addEventListener('scroll', function() {
-            document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 80);
+        // PAGE LOADER
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 2000);
         });
 
-        // Mobile menu
-        document.getElementById('mobile-menu').addEventListener('click', () => {
-            document.getElementById('nav-menu').classList.toggle('active');
+        // CUSTOM CURSOR
+        const dot = document.getElementById('cursorDot');
+        const ring = document.getElementById('cursorRing');
+        let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+        document.addEventListener('mousemove', e => {
+            mouseX = e.clientX; mouseY = e.clientY;
+            dot.style.left = mouseX + 'px';
+            dot.style.top = mouseY + 'px';
         });
-        document.querySelectorAll('.nav-links a').forEach(link => {
+        function animateRing() {
+            ringX += (mouseX - ringX) * 0.12;
+            ringY += (mouseY - ringY) * 0.12;
+            ring.style.left = ringX + 'px';
+            ring.style.top = ringY + 'px';
+            requestAnimationFrame(animateRing);
+        }
+        animateRing();
+        document.querySelectorAll('a, button, .why-card, .work-card, .testi-card, .client-pill').forEach(el => {
+            el.addEventListener('mouseenter', () => { dot.classList.add('hover'); ring.classList.add('hover'); });
+            el.addEventListener('mouseleave', () => { dot.classList.remove('hover'); ring.classList.remove('hover'); });
+        });
+
+        // NAV SHRINK
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 80);
+            highlightNav();
+            toggleBackToTop();
+            animateCounters();
+        });
+
+        // MOBILE MENU
+        const mobileBtn = document.getElementById('mobile-btn');
+        const navMenu = document.getElementById('nav-menu');
+        mobileBtn.addEventListener('click', () => {
+            mobileBtn.classList.toggle('open');
+            navMenu.classList.toggle('open');
+        });
+        navMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
-                document.getElementById('nav-menu').classList.remove('active');
+                mobileBtn.classList.remove('open');
+                navMenu.classList.remove('open');
             });
         });
 
-        // Scroll reveal
+        // SCROLL REVEAL
         function reveal() {
             document.querySelectorAll(".reveal").forEach(el => {
-                if (el.getBoundingClientRect().top < window.innerHeight - 150) {
-                    el.classList.add("active");
-                }
+                if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add("active");
             });
         }
         window.addEventListener("scroll", reveal);
         reveal();
 
-        // Filter tabs
+        // ACTIVE NAV
+        function highlightNav() {
+            const sections = document.querySelectorAll('section[id], header[id]');
+            const links = document.querySelectorAll('.nav-links a[href^="#"]');
+            let current = '';
+            sections.forEach(s => { if (window.scrollY >= s.offsetTop - 200) current = s.id; });
+            links.forEach(link => {
+                link.classList.remove('active-link');
+                if (link.getAttribute('href') === '#' + current) link.classList.add('active-link');
+            });
+        }
+
+        // FILTER
         function filterCards(category, btn) {
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             document.querySelectorAll('.work-card').forEach(card => {
-                if (category === 'all' || card.dataset.category === category) {
-                    card.style.display = 'block';
-                    setTimeout(() => card.style.opacity = '1', 10);
-                } else {
-                    card.style.opacity = '0';
-                    setTimeout(() => card.style.display = 'none', 300);
-                }
+                card.classList.toggle('hidden', category !== 'all' && card.dataset.category !== category);
             });
         }
-    </script>
 
+        // BACK TO TOP
+        const backToTop = document.getElementById('backToTop');
+        function toggleBackToTop() { backToTop.classList.toggle('visible', window.scrollY > 500); }
+
+        // ANIMATED COUNTERS
+        let countersDone = false;
+        function animateCounters() {
+            if (countersDone) return;
+            const bar = document.getElementById('statsBar');
+            if (bar && bar.getBoundingClientRect().top < window.innerHeight - 50) {
+                countersDone = true;
+                document.querySelectorAll('.val-num[data-target]').forEach(el => {
+                    const target = parseInt(el.dataset.target);
+                    const suffix = el.dataset.suffix || '';
+                    const divide = el.dataset.divide ? parseInt(el.dataset.divide) : 1;
+                    let current = 0;
+                    const timer = setInterval(() => {
+                        current += target / (1800 / 16);
+                        if (current >= target) { current = target; clearInterval(timer); }
+                        if (divide > 1) el.textContent = Math.floor(current / divide) + 'k+';
+                        else el.textContent = Math.floor(current) + suffix;
+                    }, 16);
+                });
+            }
+        }
+        animateCounters();
+
+        // FAQ
+        function toggleFaq(btn) {
+            const answer = btn.nextElementSibling;
+            const isOpen = btn.classList.contains('open');
+            document.querySelectorAll('.faq-question').forEach(q => { q.classList.remove('open'); q.nextElementSibling.classList.remove('open'); });
+            if (!isOpen) { btn.classList.add('open'); answer.classList.add('open'); }
+        }
+    </script>
 </body>
 </html>
