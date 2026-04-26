@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capabilities | Joshi's Printers Bhopal</title>
+    <meta name="description" content="10 product categories — custom packaging, labels, calendars, brochures and more. PAN India delivery.">
+    <link rel="icon" type="image/png" href="001.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="loader" id="loader">
+    <img src="001.png" alt="Joshi's Printers" class="loader-logo">
+    <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+    <p class="loader-text">What We Print</p>
+</div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<a href="https://wa.me/919826060413?text=Namaste!%20I'm%20interested%20in%20your%20printing%20services." class="float-ws" target="_blank">
+    <span style="font-size:1.3rem">💬</span><span class="ws-text">QUICK WHATSAPP QUOTE</span>
+</a>
+<a href="#" class="back-to-top" id="backToTop"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg></a>
+
+<div class="top-bar">🚀 Fast PAN-India Shipping &nbsp;|&nbsp; Trusted Since 1996 &nbsp;|&nbsp; Call: 98260 60413</div>
+
+<nav id="navbar">
+    <div class="nav-logo"><img src="001.png" alt="Joshi's Printers"></div>
+    <div class="nav-links" id="nav-menu">
+        <a href="about.html">Our Story</a>
+        <a href="why-us.html">Why Us</a>
+        <a href="capabilities.html" class="active-link">Capabilities</a>
+        <a href="index.html#testimonials">Reviews</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="index.html#contact">Location</a>
+        <a href="https://www.instagram.com/joshisprintersbpl/" target="_blank" class="insta-nav">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.332 3.608 1.308.975.975 1.245 2.242 1.308 3.607.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.332 2.633-1.308 3.608-.975.975-2.242 1.245-3.607 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.332-3.608-1.308-.975-.975-1.245-2.242-1.308-3.607-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.062-1.366.332-2.633 1.308-3.608.975-.975 2.242-1.245 3.607-1.308 1.266-.058 1.646-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.058-1.281.072-1.689.072-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.281-.058-1.689-.072-4.948-.072zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="index.html#contact" class="quote-btn">Request a Quote</a>
+    </div>
+    <div class="mobile-menu-btn" id="mobile-btn"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+    <div class="page-hero-content reveal">
+        <a href="index.html" class="page-back-link"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg> Back to Home</a>
+        <span class="eyebrow">What We Print</span>
+        <h1>Our <span>Capabilities</span></h1>
+        <p>10 product categories · PAN India delivery</p>
+    </div>
+</div>
+
+<!-- CAPABILITIES -->
+<section class="section-work" id="work">
+    <div class="work-section-header reveal">
+        <span class="eyebrow">Browse by Category</span>
+        <h2>All <span>Products</span></h2>
+        <p>From luxury packaging to large-format displays — we bring every print vision to life with precision and passion.</p>
+    </div>
+    <div class="filter-tabs reveal">
+        <button class="filter-btn active" onclick="filterCards('all',this)">All Products</button>
+        <button class="filter-btn" onclick="filterCards('packaging',this)">Packaging</button>
+        <button class="filter-btn" onclick="filterCards('branding',this)">Branding</button>
+        <button class="filter-btn" onclick="filterCards('marketing',this)">Marketing</button>
+        <button class="filter-btn" onclick="filterCards('display',this)">Display</button>
+    </div>
+    <div class="work-grid">
+        <div class="work-card reveal" data-category="packaging"><div class="work-img"><span class="work-badge">Best Seller</span><img src="007.png" alt="Custom Packaging" loading="lazy"></div><div class="work-info"><h3>Custom Packaging</h3><p>Luxury mono-cartons, sweet boxes, and industrial-grade packaging built to protect and impress.</p><div class="work-tags"><span class="work-tag">Mono-Cartons</span><span class="work-tag">Sweet Boxes</span><span class="work-tag">Custom Size</span></div><a href="https://wa.me/919826060413?text=Hi!%20I'm%20interested%20in%20Custom%20Packaging." class="shop-btn" target="_blank"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Inquire on WhatsApp</a></div></div>
+        <div class="work-card reveal" data-category="packaging"><div class="work-img"><img src="008.png" alt="Paper Bags" loading="lazy"></div><div class="work-info"><h3>Paper Bags</h3><p>Premium branded carry bags for retail, gifting, and events — fully customised with your logo and design.</p><div class="work-tags"><span class="work-tag">Retail</span><span class="work-tag">Gifting</span><span class="work-tag">Rope Handle</span></div><a href="https://wa.me/919826060413?text=Hi!%20I'm%20interested%20in%20Paper%20Bags." class="shop-btn" target="_blank"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Inquire on WhatsApp</a></div></div>
+        <div class="work-card reveal" data-category="branding"><div class="work-img"><img src="004.png" alt="Calendars" loading="lazy"></div><div class="work-info"><h3>Corporate Calendars</h3><p>High-vibrancy wall and desk calendars that keep your brand in front of clients 365 days a year.</p><div class="work-tags"><span class="work-tag">Wall Calendar</span><span class="work-tag">Desk Calendar</span><span class="work-tag">Spiral Bound</span></div><a href="https://wa.me/919826060413?text=Hi!%20I'm%20interested%20in%20Calendars." class="shop-btn" target="_blank"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Inquire on WhatsApp</a></div></div>
+        <div class="work-card reveal" data-category="branding"><div class="work-img"><img src="005.png" alt="Magazines and Booklets" loading="lazy"></div><div class="work-info"><h3>Magazines & Booklets</h3><p>Saddle-stitched and perfect-bound booklets, catalogues, and magazines with a premium finish.</p><div class="work-tags"><span class="work-tag">Catalogues</span><span class="work-tag">Magazines</span><span class="work-tag">Perfect Bound</span></div><a href="https://wa.me/919826060413?text=Hi!%20I'm%20interested%20in%20Magazines%20and%20Booklets." class="shop-btn" target="_blank"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Inquire on WhatsApp</a></div></div>
+        <div class="work-card reveal" data-category="marketing"><div class="work-img"><img src="009.png" alt="Stickers and Labels" loading="lazy"></div><div class="work-info"><h3>Stickers & Labels</h3><p>Die-cut stickers, product labels, and barcode labels in any shape or size to make your brand pop.</p><div class="work-tags"><span class="work-tag">Die-Cut</span><span class="work-tag">Waterproof</span><span class="work-tag">Product Labels</span></div><a href="https://wa.me/919826060413?text=Hi!%20I'm%20interested%20in%20Stickers%20and%20Labels." class="shop-btn" target="_blank"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Inquire on WhatsApp</a></div></div>
+        <div class="work-card reveal" data-category="marketing"><div class="work-img"><img src="010.png" alt="Pamphlets and Flyers" loading="lazy"></div><div class="work-info"><h3>Pamphlets & Flyers</h3><p>Eye-catching flyers, leaflets, and pamphlets for events, promotions, and product launches.</p><div class="work-tags"><span class="work-tag">A4 / A5</span><span class="work-tag">Tri-Fold</span><span class="work-tag">Bulk Orders</span></div><a href="https://wa.me/919826060413?text=Hi!%20I'm%20interested%20in%20Pamphlets%20and%20Flyers." class="shop-btn" target="_blank"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Inquire on WhatsApp</a></div></div>
+        <div class="work-card reveal" data-category="marketing"><div class="work-img"><img src="011.png" alt="Tags" loading="lazy"></div><div class="work-info"><h3>Tags & Swing Tags</h3><p>Custom hang tags, price tags, and swing tags for retail garments, gifts, and products.</p><div class="work-tags"><span class="work-tag">Hang Tags</span><span class="work-tag">Price Tags</span><span class="work-tag">Die-Cut Shape</span></div><a href="https://wa.me/919826060413?text=Hi!%20I'm%20interested%20in%20Tags." class="shop-btn" target="_blank"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Inquire on WhatsApp</a></div></div>
+        <div class="work-card reveal" data-category="branding"><div class="work-img"><img src="012.png" alt="Folders and Brochures" loading="lazy"></div><div class="work-info"><h3>Folders & Brochures</h3><p>Professional presentation folders and multi-page brochures for corporate meetings and client pitches.</p><div class="work-tags"><span class="work-tag">A4 Folders</span><span class="work-tag">Bi-Fold</span><span class="work-tag">UV Coated</span></div><a href="https://wa.me/919826060413?text=Hi!%20I'm%20interested%20in%20Folders%20and%20Brochures." class="shop-btn" target="_blank"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Inquire on WhatsApp</a></div></div>
+        <div class="work-card reveal" data-category="display"><div class="work-img"><img src="006.png" alt="Tent Cards" loading="lazy"></div><div class="work-info"><h3>Tent Cards & Standees</h3><p>Table tent cards and A-frame standees for restaurants, hotels, events, and retail counters.</p><div class="work-tags"><span class="work-tag">Table Tent</span><span class="work-tag">A-Frame</span><span class="work-tag">Events</span></div><a href="https://wa.me/919826060413?text=Hi!%20I'm%20interested%20in%20Tent%20Cards." class="shop-btn" target="_blank"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Inquire on WhatsApp</a></div></div>
+        <div class="work-card reveal" data-category="display"><div class="work-img"><img src="013.png" alt="Promotional Canopy" loading="lazy"></div><div class="work-info"><h3>Promotional Canopies</h3><p>Full-colour branded canopies and kiosks for outdoor events, exhibitions, and brand activations.</p><div class="work-tags"><span class="work-tag">Outdoor</span><span class="work-tag">Exhibitions</span><span class="work-tag">Full Print</span></div><a href="https://wa.me/919826060413?text=Hi!%20I'm%20interested%20in%20Promotional%20Canopies." class="shop-btn" target="_blank"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Inquire on WhatsApp</a></div></div>
+    </div>
+</section>
+
+<!-- TRUSTED BY -->
+<section class="section-clients">
+    <div class="clients-header reveal"><p>Trusted by businesses across India</p></div>
+    <div class="clients-strip reveal">
+        <div class="client-pill"><div class="client-icon">🍬</div><div><div class="client-name">Agarwal Sweets</div><div class="client-type">Food & Sweets</div></div></div>
+        <div class="client-pill"><div class="client-icon">🏥</div><div><div class="client-name">City Hospital</div><div class="client-type">Healthcare</div></div></div>
+        <div class="client-pill"><div class="client-icon">🏗️</div><div><div class="client-name">Bhopal Builders</div><div class="client-type">Real Estate</div></div></div>
+        <div class="client-pill"><div class="client-icon">🌿</div><div><div class="client-name">Ayur Natural</div><div class="client-type">FMCG / Wellness</div></div></div>
+        <div class="client-pill"><div class="client-icon">🎓</div><div><div class="client-name">Excel Academy</div><div class="client-type">Education</div></div></div>
+        <div class="client-pill"><div class="client-icon">💻</div><div><div class="client-name">TechSoft India</div><div class="client-type">IT & Software</div></div></div>
+        <div class="client-pill"><div class="client-icon">👗</div><div><div class="client-name">Ritu Boutique</div><div class="client-type">Fashion & Retail</div></div></div>
+        <div class="client-pill"><div class="client-icon">🏪</div><div><div class="client-name">MP Traders</div><div class="client-type">Wholesale</div></div></div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="section-cta">
+    <div class="cta-inner reveal">
+        <span class="cta-eyebrow">See Something You Like?</span>
+        <h2>Ready to Place Your <span>Order?</span></h2>
+        <div class="cta-divider"></div>
+        <p>Tell us what you need and we'll get back to you with a quote within hours. PAN India delivery guaranteed.</p>
+        <div class="cta-buttons">
+            <a href="https://wa.me/919826060413?text=Namaste!%20I'd%20like%20a%20quote." class="cta-btn-primary" target="_blank">💬 &nbsp;Get a Free Quote</a>
+            <a href="tel:+919826060413" class="cta-btn-secondary">📞 &nbsp;Call Us Now</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-grid">
+        <div class="footer-brand"><img src="001.png" alt="Joshi's Printers Logo"><p>A Complete Printing Solutions company serving clients across India since 1996.</p></div>
+        <div class="footer-col"><h4>Quick Links</h4><a href="about.html">Our Story</a><a href="why-us.html">Why Choose Us</a><a href="capabilities.html">Capabilities</a><a href="index.html#testimonials">Client Reviews</a><a href="index.html#faq">FAQ</a><a href="index.html#contact">Contact & Location</a></div>
+        <div class="footer-col"><h4>Connect With Us</h4><a href="tel:+919826060413">+91 98260 60413</a><a href="mailto:joshisprinters@gmail.com">joshisprinters@gmail.com</a><div class="footer-social"><a href="https://www.instagram.com/joshisprintersbpl/" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.332 3.608 1.308.975.975 1.245 2.242 1.308 3.607.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.332 2.633-1.308 3.608-.975.975-2.242 1.245-3.607 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.332-3.608-1.308-.975-.975-1.245-2.242-1.308-3.607-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.062-1.366.332-2.633 1.308-3.608.975-.975 2.242-1.245 3.607-1.308 1.266-.058 1.646-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.058-1.281.072-1.689.072-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.281-.058-1.689-.072-4.948-.072zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a><a href="https://wa.me/919826060413" target="_blank">💬</a><a href="mailto:joshisprinters@gmail.com">✉️</a></div></div>
+    </div>
+    <div class="footer-bottom"><p>Copyright © 2026 Joshi's Printers Bhopal &nbsp;·&nbsp; All Rights Reserved &nbsp;·&nbsp; Made with ❤️ in Bhopal</p></div>
+</footer>
+
+<script src="main.js"></script>
+<script>
+    function filterCards(category, btn) {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        document.querySelectorAll('.work-card').forEach(card => {
+            card.classList.toggle('hidden', category !== 'all' && card.dataset.category !== category);
+        });
+    }
+</script>
+</body>
+</html>
